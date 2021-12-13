@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	
+	<insert id="signup">
+		INSERT INTO member
+		VALUES (#{id}, SHA1(#{passwd}), #{name}, #{address}, #{gender}, #{age}, #{nickname})
+	</insert>
+	
+	<update id="update">
+		UPDATE member
+		SET name=#{name}, address=#{address}, gender=#{gender}, age=#{age}, nickname=#{nickname}
+		WHERE id=#{id}
+	</update>
+
+	<select id="login" resultType="Member">
+		SELECT * FROM member
+		WHERE id=#{id} AND passwd=SHA1(#{passwd})
+	</select>
+	
+	<select id="check_id" resultType="Integer">
+		SELECT COUNT(id) FROM member
+		WHERE id=#{id}
+	</select>
+	
+</mapper>

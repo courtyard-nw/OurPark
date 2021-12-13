@@ -1,0 +1,138 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+}
+
+/* -----------------------------header----------------------------- */
+.header {
+	position: absolute;
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	background: #fff;
+	border-bottom: 1px solid #CECECE;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.h_container {
+	width: 1200px;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.h_container>h3 {
+	font-family: 'Noto Sans KR', 'Malgun Gothic';
+	font-size: 23px;
+	font-weight: 700;
+}
+
+/* -----------------------------section----------------------------- */
+section>form {
+	position: relative;
+	top: 110px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.inp {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+#modify>a {
+	font-size: 15px;
+	font-weight: 500;
+	position: absolute;
+	top: 95px;
+	right: 455px;
+	text-decoration: underline;
+	color: #a3a1a1;
+}
+
+.inp>input {
+	width: 876px;
+	height: 45px;
+	/* border: none; */
+	/* border-radius: 0; */
+	/* border-bottom: 1px solid #E8E8E8; */
+	font-size: 20px;
+	display: inline-block;
+}
+
+.inp:focus, .form-control:focus {
+	outline: none;
+	border-radius: 6px;
+}
+
+#placeAddr, #placeName {
+	border-radius: 6px;
+	margin-left: 75px;
+}
+
+
+form>.inp:nth-child(5)>label {
+	vertical-align: top;
+}
+
+#descript {
+	position: relative;
+	top: -80px;
+}
+
+.img_uploader_container {
+	border-bottom: 5px solid #F5F5F5;
+	padding-bottom: 50px;
+}
+
+.img_uploader {
+	margin-left: 55px;
+}
+
+#full-stars-example-two {
+	display: inline-block;
+	margin-left: 75px;
+}
+
+.info {
+	position: relative;
+	top: 0px;
+	width: 876px;
+	height: 100px;
+	margin-left: 75px;
+	font-size: 15px;
+	display: inline-block;
+}
+
+.inp, .btn-group {
+	width: 1000px;
+}
+
+.btn-group>button, .btn-group>div {
+	font-size: 25px;
+	font-weight: 600;
+	height: 60px;
+}
+
+.btn-group>a>div {
+	width: 500px;
+	border-radius: 5px 0px 0px 5px;
+}
+
+/* .category {
+	display: inline-block;
+	margin-left: 75px;
+}
+
+.category>label {
+	margin-right: 10px;
+} */

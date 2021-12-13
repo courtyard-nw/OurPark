@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+}
+
+/* -----------------------------header----------------------------- */
+.header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #CECECE;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    z-index: 100;
+}
+
+#logo {
+    position: absolute;
+    top: 16px;
+    left: 360px;
+    z-index: 100;
+
+}
+
+#review, #reviewTemp {
+    position: absolute;
+    top: 30px;
+    left: 1335px;
+    text-decoration: none;
+    font-family: 'Noto Sans KR', 'Malgun Gothic';
+    font-size: 19px;
+    font-weight: 500;
+    color: #616161;
+    z-index: 100;
+
+}
+
+.user {
+    position: absolute;
+    top: 10px;
+    left: 1450px;
+    border: 1px solid #CECECE;
+    border-radius: 30px;
+    width: 111px;
+    height: 57px;
+    z-index: 100;
+}
+
+#userImg {
+	width: 45px;
+    height: 45px;
+    z-index: 100;
+    position: absolute;
+    top: 15px;
+    right: 368px;
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+
+/* -----------------------------search box----------------------------- */
+
+#header_input {
+    position: absolute;
+    left: 664px;
+    z-index: 100;
+}
+
+#search-box {
+    position: absolute;
+    top: 15px;
+    width: 621px;
+    height: 50px;
+    border-radius: 45px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    z-index: 100;
+}
+
+#header_input > form > input {
+    position: absolute;
+    top: 17px;
+    left: 40px;
+    padding: 0px;
+    border: none;
+    width: 533px;
+    height: 45px;
+    font-family: 'Noto Sans KR', 'Malgun Gothic';
+    font-size: 15px;
+    z-index: 100;
+    outline: none;
+
+}
+
+#searchBtn {
+	position: absolute;
+	display: inline-block;
+	top: 10px;
+    right: -305px;
+    z-index: 100;
+    padding: 0;
+	border: none;
+	background: none;
+}
+
+#searchBtn_img {
+	width: 40px;
+	height: 40px;
+}
+
+
+/* -----------------------------section-sec_group----------------------------- */
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.sec_group {
+    position: absolute;
+    top: 81px;
+    width: 570px;
+    height: 1280px;
+    overflow-y: scroll;
+}
+
+.sec_group h3 {
+    font-family: 'Noto Sans KR', 'Malgun Gothic';
+    font-weight: 500;
+}
+
+.sec_group > h3:nth-child(1) {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    font-size: 25px;
+    color: #30A55D;
+}
+
+.sec_group > div:nth-child(2) {
+    position: absolute;
+    top: 50px;
+    left: 455px;
+    width: 70px;
+    height: 29px;
+    display: none;
+}
+
+.sec_group a {
+    text-decoration: none;
+    color: #9C9C9C;
+}
+
+.sec_group a > h3 {
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    font-size: 20px;
+    color: #9C9C9C;
+}
+
+.pagi {
+    position: relative;
+    top: 130px;
+    font-size: 21px;
+    padding-left: 43.7%;
+}
+
+.pagi a{
+    margin-right: 10px;
+}
+
+/* -----------------------------section-sec_group_info----------------------------- */
+.s-left {
+    position: absolute;
+    left: 50px;
+}
+
+.content {
+    position: relative;
+    top: 113px;
+    padding-top: 20px;
+    width: 470px;
+    height: 190px;
+    font-family: 'Noto Sans KR', 'Malgun Gothic';
+    font-size: 17px;
+    font-weight: 500;
+    border-bottom: 0.5px solid #DBDBDB;
+}
+
+.c-img {
+    width: 196px;
+    height: 140px;
+    border-radius: 10px;
+}
+
+.name {
+    color: #555;
+    width: 215px;
+}
+
+.content > a > img{
+    float: left;
+    object-fit: cover;
+}
+
+.txt{
+    margin-left: 48%;
+    line-height: 1.5;
+}
+
+.addr, .addr2, .revNum{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #9B9B9B;
+}
+
+.addr2 {
+	font-size: 13px;
+	font-weight: 300;
+	margin-top: 3px;
+}
+
+.revNum {
+    padding-left: 5px;
+    color: #797979;
+
+}
+
+.content .txt > div > img:nth-child(3) {
+    margin-left: 10px;
+}
+
+.score, .like {
+    position: absolute;
+    top: 23px;
+    left: 444px;
+    color: #30A55D;
+}
+
+.like {
+    top: 73px;
+    left: 446px;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#pagination .on {
+	font-weight: 700;
+	color: #44c074;
+}
+
+/* -----------------------------section_map----------------------------- */
+#map {
+    position: absolute;
+    top: 81px;
+    left: 620px;
+    width: 1300px;
+    height: 92%;
+    z-index: 90;
+    /* display: none; */
+}
+
+/* -----------------------------hover animation----------------------------- */
+.hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }
