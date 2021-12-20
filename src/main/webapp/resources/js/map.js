@@ -14,14 +14,15 @@ function getReviewInfo(index) {
 		method: "GET",
 		dataType: "json",
 		success: result => {
-			const reviewInfo = result;
+			const info = result;
+			const average = info.average;
 
-			if (reviewInfo.average == Math.round(reviewInfo.average)) {
-				$(`.average${index}`).text(`${reviewInfo.average}.0`);
+			if (average == Math.round(average)) {
+				$(`.average${index}`).text(`${average}.0`);
 			} else
-				$(`.average${index}`).text(reviewInfo.average);
-			$(`.countCmt${index}`).text(reviewInfo.countCmt);
-			$(`.countImg${index}`).text(reviewInfo.countImg);
+				$(`.average${index}`).text(average);
+			$(`.countCmt${index}`).text(info.countCmt);
+			$(`.countImg${index}`).text(info.countImg);
 
 			return;
 		},
