@@ -50,8 +50,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewImage> getImages(String placeName) {
-		return reviewImageDao.getImages(placeName);
+	public List<ReviewImage> getImage(String placeName) {
+		return reviewImageDao.getImage(placeName);
 	}
 
 	@Override

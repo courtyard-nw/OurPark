@@ -10,7 +10,7 @@ public interface ReviewImageDao {
 
 	int countImg(String placeName);
 
-	List<ReviewImage> getImages(String placeName);
+	List<ReviewImage> getImage(String placeName);
 
 	void delete(int review);
 

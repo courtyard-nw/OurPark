@@ -18,7 +18,7 @@ public interface ReviewService {
 
 	int countImg(String placeName);
 
-	List<ReviewImage> getImages(String placeName);
+	List<ReviewImage> getImage(String placeName);
 
 	List<Review> getCmt(String placeName);
 

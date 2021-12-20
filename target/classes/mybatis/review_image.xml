@@ -14,7 +14,7 @@
 		WHERE place_name=#{placeName}
 	</select>
 	
-	<select id="get_images" resultType="ReviewImage">
+	<select id="get_image" resultType="ReviewImage">
 		SELECT * FROM review_image
 		WHERE place_name=#{placeName}
 		ORDER BY code DESC;

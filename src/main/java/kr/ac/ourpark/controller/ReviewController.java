@@ -113,12 +113,12 @@ public class ReviewController {
 		return list;
 	}
 	
-	@GetMapping("/getImages")
+	@GetMapping("/getImage")
 	@ResponseBody
-	public List<ReviewImage> getImages(String placeName) {
-		List<ReviewImage> images = service.getImages(placeName);
+	public List<ReviewImage> getImage(String placeName) {
+		List<ReviewImage> image = service.getImage(placeName);
 		
-		return images;
+		return image;
 	}
 	
 	

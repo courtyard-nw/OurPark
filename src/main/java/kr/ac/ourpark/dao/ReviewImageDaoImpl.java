@@ -24,8 +24,8 @@ public class ReviewImageDaoImpl implements ReviewImageDao {
 	}
 
 	@Override
-	public List<ReviewImage> getImages(String placeName) {
-		return sql.selectList("review_image.get_images", placeName);
+	public List<ReviewImage> getImage(String placeName) {
+		return sql.selectList("review_image.get_image", placeName);
 	}
 
 	@Override
