@@ -21,6 +21,7 @@ function getReviewInfo(index) {
 				$(`.average${index}`).text(`${average}.0`);
 			} else
 				$(`.average${index}`).text(average);
+
 			$(`.countCmt${index}`).text(info.countCmt);
 			$(`.countImg${index}`).text(info.countImg);
 
@@ -31,18 +32,17 @@ function getReviewInfo(index) {
 }
 
 //장소 대표 이미지를 검색
-function getImages(index) {
+function getImage(index) {
 	let img = `.img${index}`;
 
-	$.ajax("getImages?placeName=" + item.placeName, {
+	$.ajax("getImage?placeName=" + item.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
-			const images = result;
-			console.log(images);
+			const image = result;
 
-			if (images != '') {
-				$(img).attr("src", `../upload/${images[0].uuid}_${images[0].filename}`);
+			if (image != '') {
+				$(img).attr("src", `../upload/${image[0].uuid}_${image[0].filename}`);
 			} else {
 				$(img).attr("src", "../resources/img/noImg_map.png");
 			}
@@ -263,7 +263,7 @@ function getListItem(index, places) {
 
 	item.placeName = places.place_name;
 	getReviewInfo(index); 
-	getImages(index);
+	getImage(index);
 
 	//el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
 	$(el).click(() => {
