@@ -7,6 +7,7 @@ let item = {
 // 마커를 담을 배열입니다
 var markers = [];
 
+//장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
 	$.ajax("reviewInfo?placeName=" + item.placeName, {
@@ -28,6 +29,7 @@ function getReviewInfo(index) {
 	});
 }
 
+//장소 대표 이미지를 검색
 function getImages(index) {
 	let img = `.img${index}`;
 
@@ -48,6 +50,7 @@ function getImages(index) {
 	});
 }
 
+//1개의 장소 클릭 시 item 객체를 컨트롤러로 전달하여 리뷰 페이지에서 사용할 수 있도록 함
 function sendPlace() {
 	$.ajax({
 		type: "POST",
@@ -55,18 +58,13 @@ function sendPlace() {
 		contentType: "application/json",
 		data: JSON.stringify(item),
 		success: function (result) {
-			//console.log("[ajax] success: " + JSON.stringify(item));
-			//alert(`success: ${result}`);
-
 			return;
 		},
 		error: xhr => alert(`오류 발생: ${xhr.statusText}`)
 	});
 }
 
-//function makeOverlay(marker) {
-// 커스텀 오버레이에 표시할 내용입니다     
-// HTML 문자열 또는 Dom Element 입니다 
+//스와이퍼 dom을 생성하기 위해서 저장
 var content = '<div class="sw_wrap">' +
 	'    <div class="swiper-wrapper">' +
 	'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
@@ -94,15 +92,16 @@ var content = '<div class="sw_wrap">' +
 	'   </div>' +
 	'</div>';
 
+
+//카카오 지도 api
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 1. 객체 생성 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center: new kakao.maps.LatLng(36.34982018787662, 127.38484244991709), // 지도의 중심좌표
 		level: 3, // 지도의 확대 레벨
 		mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
 	};
-
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 1. 객체 생성 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 
 // 지도를 생성한다 
 var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -262,8 +261,8 @@ function getListItem(index, places) {
 	el.className = 'sec_group_info';
 
 	item.placeName = places.place_name;
-	getReviewInfo(index); //장소 평점, 댓글 수, 이미지 갯수를 검색
-	getImages(index);  //장소 대표 이미지를 검색
+	getReviewInfo(index); 
+	getImages(index);
 
 	//el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
 	$(el).click(() => {
@@ -275,7 +274,6 @@ function getListItem(index, places) {
 		} else {
 			item.placeAddr = places.address_name;
 		}
-
 
 		sendPlace();
 	})
@@ -361,21 +359,6 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
-
-// 커스텀 오버레이가 표시될 위치입니다 
-//var position = marker.getPostion();
-
-// 커스텀 오버레이를 생성합니다
-//var customOverlay = new kakao.maps.CustomOverlay({
-//    position: position,
-//    content: content,
-//    xAnchor: 0.5,
-//    yAnchor: 0.5
-//});
-
-// 커스텀 오버레이를 지도에 표시합니다
-//customOverlay.setMap(map);
-//}
 
 $(function () {
 	$("#user").click(() => {
