@@ -46,8 +46,10 @@ function getCmt() {
 		success: result => {
 			const cmt = result;
 
+			//서버에서 받아온 댓글의 총 개수를 저장
 			cmtNum = Object.keys(cmt).length;
 
+			//등록된 댓글이 존재하면 더보기 버튼 사라짐
 			hideBtn();
 
 			appendCmt(cmt);
