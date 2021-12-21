@@ -3,33 +3,38 @@ let cmtPerClick = 0;
 let cmtNum;
 
 $(function () {
-	
-	$("#user").click(function () {
-	    $(".map_user_menu").removeClass("hidden");
-	})
-	
-	$("#map_user_menu_bg").click(function () {
-	    $(".map_user_menu").addClass("hidden");
-	})
-	
-	$(".cancel").click(() => {
-			history.back();
-		});
-			
-	$(".btn").click(() => {
-		cmtPerClick += 5;
-		getCmt();
-	});
-	
-	$("#logo").click(() => {
-		sendToMap();
-	})
 		
 	getImages();
 
 	getReviewInfo();
 	
 	getCmt();
+
+	//더보기 버튼 클릭 시 댓글 표시
+	$(".btn").click(() => {
+		cmtPerClick += 5;
+		getCmt();
+	});
+
+	//로고를 클릭하면 지도 페이지로 이동
+	$("#logo").click(() => {
+		sendToMap();
+	})
+
+	//스와이퍼에서 x를 클릭하면 뒤로가기 실행
+	$(".cancel").click(() => {
+		history.back();
+	});
+
+	//사용자 메뉴 클릭 시 드롭다운 메뉴 표시
+	$("#user").click(function () {
+	    $(".map_user_menu").removeClass("hidden");
+	})
+	
+	//드롭다운 메뉴의 바깥을 클릭하면 드롭다운 메뉴가 사라지게 만듦
+	$("#map_user_menu_bg").click(function () {
+	    $(".map_user_menu").addClass("hidden");
+	})
 
 })
 
