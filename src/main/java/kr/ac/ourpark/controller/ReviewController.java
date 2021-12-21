@@ -52,7 +52,7 @@ public class ReviewController {
 					String filename = file.getOriginalFilename();
 					String uuid = UUID.randomUUID().toString();
 
-					file.transferTo(new File(upldPathSchool + uuid + "_" + filename));
+					file.transferTo(new File(upldPathMac + uuid + "_" + filename));
 
 					ReviewImage image = new ReviewImage();
 					image.setFilename(filename);
@@ -168,7 +168,7 @@ public class ReviewController {
 					String filename = file.getOriginalFilename();
 					String uuid = UUID.randomUUID().toString();
 
-					file.transferTo(new File(upldPathSchool + uuid + "_" + filename));
+					file.transferTo(new File(upldPathMac + uuid + "_" + filename));
 
 					ReviewImage image = new ReviewImage();
 					image.setFilename(filename);

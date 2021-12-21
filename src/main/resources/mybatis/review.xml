@@ -24,12 +24,12 @@
 	
 	<resultMap type="Review" id="ReviewMap">
 		<id column="code" property="code" />
-		<result column="member" property="member"/>
+		<result column="r_member" property="member"/>
 		<result column="place_addr" property="placeAddr"/>
 		<result column="place_name" property="placeName"/>
 		<result column="rating" property="rating"/>
 		<result column="info" property="info"/>
-		<result column="reg_date" property="fmtDate"/>
+		<result column="r_reg_date" property="fmtDate"/>
 		
 		<collection property="images" column="review" ofType="ReviewImage" javaType="ArrayList">
 			<id column="i_code" property="code"/>
@@ -41,7 +41,7 @@
 	</resultMap>
 	
 	<select id="get_cmt" resultMap="ReviewMap">
-		SELECT r.code, IFNULL(m.nickname, '익명의 사용자') member, r.place_addr, r.place_name, r.rating, r.info, LEFT(CAST(r.reg_date AS CHAR), 10) reg_date,
+		SELECT r.code, IFNULL(m.nickname, '익명의 사용자') r_member, r.place_addr, r.place_name, r.rating, r.info, LEFT(CAST(r.reg_date AS CHAR), 10) r_reg_date,
 			i.code i_code, i.review, i.place_name,	i.filename,	i.uuid
 		FROM review r
 		LEFT OUTER JOIN review_image i ON r.code = i.review
