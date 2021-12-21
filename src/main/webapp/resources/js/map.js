@@ -7,6 +7,22 @@ let item = {
 // 마커를 담을 배열입니다
 var markers = [];
 
+$(function () {
+
+	$("#user").click(() => {
+		$(".map_user_menu").removeClass("hidden");
+	})
+
+	$("#map_user_menu_bg").click(() => {
+		$(".map_user_menu").addClass("hidden");
+	})
+
+	$(".cancel").click(() => {
+		history.back();
+	});
+	
+})
+
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
@@ -360,18 +376,3 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
-
-$(function () {
-	$("#user").click(() => {
-		$(".map_user_menu").removeClass("hidden");
-	})
-
-	$("#map_user_menu_bg").click(() => {
-		$(".map_user_menu").addClass("hidden");
-	})
-
-	$(".cancel").click(() => {
-		history.back();
-	});
-
-})

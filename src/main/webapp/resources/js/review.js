@@ -2,6 +2,37 @@ let placeName = $(".name").text();
 let cmtPerClick = 0;
 let cmtNum;
 
+$(function () {
+	
+	$("#user").click(function () {
+	    $(".map_user_menu").removeClass("hidden");
+	})
+	
+	$("#map_user_menu_bg").click(function () {
+	    $(".map_user_menu").addClass("hidden");
+	})
+	
+	$(".cancel").click(() => {
+			history.back();
+		});
+			
+	$(".btn").click(() => {
+		cmtPerClick += 5;
+		getCmt();
+	});
+	
+	$("#logo").click(() => {
+		sendToMap();
+	})
+		
+	getImages();
+
+	getReviewInfo();
+	
+	getCmt();
+
+})
+
 function getCmt() {
 
 	$.ajax("getCmt?placeName=" + placeName, {
@@ -153,34 +184,3 @@ function sendToMap() {
 	const keyword = $(".name").text();
 	$("#logo").attr("href", `map?keyword=${keyword}`);
 }
-
-$(function () {
-	
-	$("#user").click(function () {
-	    $(".map_user_menu").removeClass("hidden");
-	})
-	
-	$("#map_user_menu_bg").click(function () {
-	    $(".map_user_menu").addClass("hidden");
-	})
-	
-	$(".cancel").click(() => {
-			history.back();
-		});
-			
-	$(".btn").click(() => {
-		cmtPerClick += 5;
-		getCmt();
-	});
-	
-	$("#logo").click(() => {
-		sendToMap();
-	})
-		
-	getImages();
-
-	getReviewInfo();
-	
-	getCmt();
-
-})
