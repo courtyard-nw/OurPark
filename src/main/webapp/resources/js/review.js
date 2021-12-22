@@ -73,6 +73,8 @@ function appendCmt(cmt) {
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
 
 		let c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
+		
+		//평점이 정수일 때 '.0' 추가
 		if (cmt[i].rating == Math.round(cmt[i].rating)) {
 			c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
 		}
@@ -107,7 +109,6 @@ function appendCmt(cmt) {
 }
 
 function getImages() {
-	let img = ".img";
 
 	$.ajax("getImage?placeName=" + placeName, {
 		method: "GET",
@@ -115,41 +116,49 @@ function getImages() {
 		success: result => {
 			const images = result;
 
-			if (images != '') {
-				$(".main_img").attr("src", `../upload/${images[0].uuid}_${images[0].filename}`);
-
-				if (images.length > 1) {
-					for (let i = 1; i <= images.length && i < 5; i++) {
-						$(`${img + i}`).attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
-					}
-				}
-
-				$("#swiper").click(() => {
-					$(".mySwiper").removeAttr("style");
-					$(".wrapper").css("display", "none");
-					$("footer").css("display", "none");
-
-					//swiper 이미지 생성
-					const swiper_wrapper = $(".swiper-wrapper");
-					for (let i = 0; i <= images.length; i++) {
-						const slide = $("<div>").addClass("swiper-slide");
-						let img = $("<img>").attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
-
-						slide.append(img);
-						swiper_wrapper.append(slide);
-					}
-				})
-
-
-			} else {
-				$(".main_img").attr("src", "../resources/img/noImg.png");
-				$(img).attr("src", "../resources/img/noImg.png");
-			}
+			showImages(images);
 
 			return;
 		},
 		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
 	});
+}
+
+function showImages(images) {
+	let img = ".img";
+	
+	if (images != '') {
+		//촤근에 등록된 이미지를 메인 이미지로 표시
+		$(".main_img").attr("src", `../upload/${images[0].uuid}_${images[0].filename}`);
+
+		if (images.length > 1) {
+			for (let i = 1; i <= images.length && i < 5; i++) {
+				$(`${img + i}`).attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
+			}
+		}
+
+		$("#swiper").click(() => {
+			$(".mySwiper").removeAttr("style");
+			$(".wrapper").css("display", "none");
+			$("footer").css("display", "none");
+
+			//swiper 이미지 생성
+			const swiper_wrapper = $(".swiper-wrapper");
+			for (let i = 0; i <= images.length; i++) {
+				const slide = $("<div>").addClass("swiper-slide");
+				let img = $("<img>").attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
+
+				slide.append(img);
+				swiper_wrapper.append(slide);
+			}
+		})
+
+
+	} else {
+		$(".main_img").attr("src", "../resources/img/noImg.png");
+		$(img).attr("src", "../resources/img/noImg.png");
+	}
+
 }
 
 function getReviewInfo() {
