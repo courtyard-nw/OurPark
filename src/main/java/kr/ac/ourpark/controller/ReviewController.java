@@ -34,16 +34,16 @@ import kr.ac.ourpark.service.ReviewService;
 @Controller
 public class ReviewController {
 	final String path = "review/";
-	final String upldPathHome= "D:///jihun/upload/";
-	final String upldPathMac= "file:///Users/jihunjang/Desktop/lecture/upload/";
-	final String upldPathSchool= "D:///upload/";
+	final String upldPathHome = "D:///jihun/upload/";
+	final String upldPathMac = "/Users/jihunjang/Desktop/upload/";
+	final String upldPathSchool = "D:///upload/";
 	
 	@Autowired
 	ReviewService service;
 	
 	@PostMapping("/update/{code}")
 	public String update(@PathVariable int code, Review item, @RequestParam("reviewImage") List<MultipartFile> reviewImage) {
-		
+
 		try {
 			List<ReviewImage> images = new ArrayList<ReviewImage>();
 
