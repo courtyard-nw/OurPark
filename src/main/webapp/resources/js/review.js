@@ -71,13 +71,9 @@ function appendCmt(cmt) {
 		let user_name = $("<p>").addClass("user_name").text(cmt[i].member);
 		const div_date = $("<div>");
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
-
-		let c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
-
-		//평점이 정수일 때 '.0' 추가
-		if (cmt[i].rating == Math.round(cmt[i].rating)) {
-			c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
-		}
+		
+		let c_rate;
+		rating(c_rate, cmt, i);
 
 		const c_text = $("<p>").text(cmt[i].info);
 
@@ -105,6 +101,16 @@ function appendCmt(cmt) {
 		div_c.append(div_user).append(div_date).append(div_img);
 
 		$(".more").before(div_c);
+	}
+}
+
+function rating(c_rate, cmt, i) {
+	
+	//평점이 정수일 때 '.0' 추가
+	if (cmt[i].rating == Math.round(cmt[i].rating)) {
+		c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
+	} else {
+		c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
 	}
 }
 
@@ -187,6 +193,7 @@ function showReviewInfo(result) {
 		$("#average").text(`${avg}.0`);
 	} else
 		$("#average").text(avg);
+
 	$("#countCmt").text(info.countCmt);
 	$("#countCmt_2").text(`리뷰 (${info.countCmt})`);
 	$("#countImg").text(info.countImg);
