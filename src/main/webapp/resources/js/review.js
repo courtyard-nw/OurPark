@@ -79,13 +79,7 @@ function appendCmt(cmt) {
 
 		const div_img = $("<div>").addClass("c_img");
 		const a_img = $("<a>").attr("href", "#");
-
-		let c_img;
-
-		for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
-			c_img = $("<img>").attr("src", `../upload/${cmt[i].images[n].uuid}_${cmt[i].images[n].filename}`);
-			a_img.append(c_img);
-		}
+		images(a_img, cmt, i);
 
 		//const div_delete = $("<div>");
 		//const a_update = $("<a>").attr("href", "#5").text("수정 |");
@@ -102,6 +96,15 @@ function appendCmt(cmt) {
 
 		$(".more").before(div_c);
 	}
+}
+
+function images(a_img, cmt, i) {
+	let c_img;
+
+		for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
+			c_img = $("<img>").attr("src", `../upload/${cmt[i].images[n].uuid}_${cmt[i].images[n].filename}`);
+			a_img.append(c_img);
+		}
 }
 
 function rating(c_rate, cmt, i) {
