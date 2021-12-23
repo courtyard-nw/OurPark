@@ -3,11 +3,11 @@ let cmtPerClick = 0;
 let cmtNum;
 
 $(function () {
-		
+
 	getImages();
 
 	getReviewInfo();
-	
+
 	getCmt();
 
 	//더보기 버튼 클릭 시 댓글 표시
@@ -28,12 +28,12 @@ $(function () {
 
 	//사용자 메뉴 클릭 시 드롭다운 메뉴 표시
 	$("#user").click(function () {
-	    $(".map_user_menu").removeClass("hidden");
+		$(".map_user_menu").removeClass("hidden");
 	})
-	
+
 	//드롭다운 메뉴의 바깥을 클릭하면 드롭다운 메뉴가 사라지게 만듦
 	$("#map_user_menu_bg").click(function () {
-	    $(".map_user_menu").addClass("hidden");
+		$(".map_user_menu").addClass("hidden");
 	})
 
 })
@@ -73,7 +73,7 @@ function appendCmt(cmt) {
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
 
 		let c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
-		
+
 		//평점이 정수일 때 '.0' 추가
 		if (cmt[i].rating == Math.round(cmt[i].rating)) {
 			c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
@@ -131,20 +131,26 @@ function getReviewInfo() {
 		method: "GET",
 		dataType: "json",
 		success: result => {
-			const reviewInfo = result;
 
-			if (reviewInfo.average == Math.round(reviewInfo.average)) {
-				$("#average").text(`${reviewInfo.average}.0`);
-			} else
-				$("#average").text(reviewInfo.average);
-			$("#countCmt").text(reviewInfo.countCmt);
-			$("#countCmt_2").text(`리뷰 (${reviewInfo.countCmt})`);
-			$("#countImg").text(reviewInfo.countImg);
+			showReviewInfo(result);
 
 			return;
 		},
 		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
 	});
+}
+
+function showReviewInfo(result) {
+	const info = result;
+	const avg = info.average;
+
+	if (avg == Math.round(avg)) {
+		$("#average").text(`${avg}.0`);
+	} else
+		$("#average").text(avg);
+	$("#countCmt").text(info.countCmt);
+	$("#countCmt_2").text(`리뷰 (${info.countCmt})`);
+	$("#countImg").text(info.countImg);
 }
 
 function hideBtn() {
