@@ -124,6 +124,45 @@ function getImages() {
 	});
 }
 
+function showImages(images) {
+	let img = ".img";
+	if (images != '') {
+		//촤근에 등록된 이미지를 메인 이미지로 표시
+		$(".main_img").attr("src", `../upload/${images[0].uuid}_${images[0].filename}`);
+
+		if (images.length > 1) {
+			for (let i = 1; i <= images.length && i < 5; i++) {
+				$(`${img + i}`).attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
+			}
+		}
+
+		showSwiper(images);
+
+	} else {
+		$(".main_img").attr("src", "../resources/img/noImg.png");
+		$(img).attr("src", "../resources/img/noImg.png");
+	}
+
+}
+
+function showSwiper(images) {
+	$("#swiper").click(() => {
+		$(".mySwiper").removeAttr("style");
+		$(".wrapper").css("display", "none");
+		$("footer").css("display", "none");
+
+		//swiper 이미지 생성
+		const swiper_wrapper = $(".swiper-wrapper");
+		for (let i = 0; i <= images.length; i++) {
+			const slide = $("<div>").addClass("swiper-slide");
+			let img = $("<img>").attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
+
+			slide.append(img);
+			swiper_wrapper.append(slide);
+		}
+	})
+}
+
 function getReviewInfo() {
 	console.log("getReviewInfo: " + placeName);
 
@@ -168,43 +207,4 @@ function hideBtn() {
 function sendToMap() {
 	const keyword = $(".name").text();
 	$("#logo").attr("href", `map?keyword=${keyword}`);
-}
-
-function showImages(images) {
-	let img = ".img";
-	if (images != '') {
-		//촤근에 등록된 이미지를 메인 이미지로 표시
-		$(".main_img").attr("src", `../upload/${images[0].uuid}_${images[0].filename}`);
-
-		if (images.length > 1) {
-			for (let i = 1; i <= images.length && i < 5; i++) {
-				$(`${img + i}`).attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
-			}
-		}
-
-		showSwiper(images);
-
-	} else {
-		$(".main_img").attr("src", "../resources/img/noImg.png");
-		$(img).attr("src", "../resources/img/noImg.png");
-	}
-
-}
-
-function showSwiper(images) {
-	$("#swiper").click(() => {
-		$(".mySwiper").removeAttr("style");
-		$(".wrapper").css("display", "none");
-		$("footer").css("display", "none");
-
-		//swiper 이미지 생성
-		const swiper_wrapper = $(".swiper-wrapper");
-		for (let i = 0; i <= images.length; i++) {
-			const slide = $("<div>").addClass("swiper-slide");
-			let img = $("<img>").attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
-
-			slide.append(img);
-			swiper_wrapper.append(slide);
-		}
-	})
 }
