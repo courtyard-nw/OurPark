@@ -34,7 +34,7 @@ $(function () {
 
 
 	$(".id").change(() => {
-		const userId = $(".id").val();
+		let userId = $(".id").val();
 
 		$.ajax("checkId?id=" + userId, {
 			method: "GET",
