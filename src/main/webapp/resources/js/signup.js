@@ -39,16 +39,10 @@ $(function () {
 		$.ajax("checkId?id=" + userId, {
 			method: "GET",
 			success: result => {
-				if (result == "OK")
-					alert("사용 가능한 아이디입니다");
-				else {
-					alert("사용 중인 아이디입니다");
-					$(".id").val("");
-				}
+				idMsg(result);
 			},
 			error: xhr => {
-				alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
-				$(".id").val("");
+				idErrMsg(xhr);
 			}
 		})
 	});
@@ -78,6 +72,20 @@ $(function () {
 	}); */
 
 })
+
+function idErrMsg(xhr) {
+	alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
+	$(".id").val("");
+}
+
+function idMsg(result) {
+	if (result == "OK")
+		alert("사용 가능한 아이디입니다");
+	else {
+		alert("사용 중인 아이디입니다");
+		$(".id").val("");
+	}
+}
 
 function pwdChk() {
 	if (!regx.test($(".passwd").val())) {
