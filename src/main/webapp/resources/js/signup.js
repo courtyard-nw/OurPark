@@ -1,17 +1,11 @@
 var regx = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
 $(function () {
-	$(".cancel").click(() => {
-		history.back();
-	});
+	$(".cancel").click(() => history.back());
 
-	$(".passwd").change(() => {
-		pwdChk();
-	});
+	$(".passwd").change(() => pwdChk());
 
-	$(".passwd_confirm").change(() => {
-		pwdConfrimChk();
-	});
+	$(".passwd_confirm").change(() => pwdConfrimChk());
 
 	$(".id").change(() => {
 		let userId = $(".id").val();
