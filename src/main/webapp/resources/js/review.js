@@ -1,6 +1,8 @@
-let placeName = $(".name").text();
-let cmtPerClick = 0;
-let cmtNum;
+const state = {
+	placeName: $(".name").text(),
+	cmtPerClick: 0,
+	cmtNum: 0
+};
 
 $(function () {
 
@@ -12,7 +14,7 @@ $(function () {
 
 	//더보기 버튼 클릭 시 댓글 표시
 	$(".btn").click(() => {
-		cmtPerClick += 5;
+		state.cmtPerClick += 5;
 		getCmt();
 	});
 
@@ -40,14 +42,14 @@ $(function () {
 
 function getCmt() {
 
-	$.ajax("getCmt?placeName=" + placeName, {
+	$.ajax("getCmt?placeName=" + state.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
 			const cmt = result;
 
 			//서버에서 받아온 댓글의 총 개수를 저장
-			cmtNum = Object.keys(cmt).length;
+			state.cmtNum = Object.keys(cmt).length;
 
 			//등록된 댓글이 존재하면 더보기 버튼 사라짐
 			hideBtn();
@@ -61,7 +63,7 @@ function getCmt() {
 }
 
 function appendCmt(cmt) {
-	for (let i = 0 + cmtPerClick; i <= 4 + cmtPerClick && i <= Object.keys(cmt).length; i++) {
+	for (let i = 0 + state.cmtPerClick; i <= 4 + state.cmtPerClick && i <= Object.keys(cmt).length; i++) {
 
 		const div_c = $("<div>").addClass("c").attr("data-num", i + 1);
 
@@ -71,7 +73,7 @@ function appendCmt(cmt) {
 		let user_name = $("<p>").addClass("user_name").text(cmt[i].member);
 		const div_date = $("<div>");
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
-		
+
 		let c_rate;
 		rating(c_rate, cmt, i);
 
@@ -101,14 +103,14 @@ function appendCmt(cmt) {
 function images(a_img, cmt, i) {
 	let c_img;
 
-		for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
-			c_img = $("<img>").attr("src", `../upload/${cmt[i].images[n].uuid}_${cmt[i].images[n].filename}`);
-			a_img.append(c_img);
-		}
+	for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
+		c_img = $("<img>").attr("src", `../upload/${cmt[i].images[n].uuid}_${cmt[i].images[n].filename}`);
+		a_img.append(c_img);
+	}
 }
 
 function rating(c_rate, cmt, i) {
-	
+
 	//평점이 정수일 때 '.0' 추가
 	if (cmt[i].rating == Math.round(cmt[i].rating)) {
 		c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
@@ -119,7 +121,7 @@ function rating(c_rate, cmt, i) {
 
 function getImages() {
 
-	$.ajax("getImage?placeName=" + placeName, {
+	$.ajax("getImage?placeName=" + state.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -173,9 +175,9 @@ function showSwiper(images) {
 }
 
 function getReviewInfo() {
-	console.log("getReviewInfo: " + placeName);
+	console.log("getReviewInfo: " + state.placeName);
 
-	$.ajax("reviewInfo?placeName=" + placeName, {
+	$.ajax("reviewInfo?placeName=" + state.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -205,10 +207,10 @@ function showReviewInfo(result) {
 function hideBtn() {
 	const msg = $("<p>").addClass("msg").text(`"등록된 리뷰가 없어요ㅜㅜ"`);
 
-	if (cmtNum == 0) {
+	if (state.cmtNum == 0) {
 		$(".btn").css("display", "none");
 		$(".comment_container").append(msg);
-	} else if ($(".c:last").data("num") == cmtNum) {
+	} else if ($(".c:last").data("num") == state.cmtNum) {
 		$(".btn").css("display", "none");
 	}
 
