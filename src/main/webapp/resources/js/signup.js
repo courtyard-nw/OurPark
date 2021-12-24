@@ -10,14 +10,7 @@ $(function () {
 	});
 
 	$(".passwd_confirm").change(() => {
-		if ($(".passwd").val() != $(".passwd_confirm").val()) {
-			$("#passwdConfirm_msg").removeClass("hidden").text("비밀번호가 일치하지 않습니다");
-			$(".passwd_confirm").addClass("warn").focus();
-		} else {
-			$(".passwd_confirm").removeClass("warn");
-			$("#passwdConfirm_msg").addClass("hidden");
-		}
-
+		pwdConfrimChk();
 	});
 
 	/**
@@ -93,6 +86,16 @@ function pwdChk() {
 	} else {
 		$(".passwd").removeClass("warn");
 		$("#passwd_msg").addClass("hidden");
+	}
+}
+
+function pwdConfrimChk() {
+	if ($(".passwd").val() != $(".passwd_confirm").val()) {
+		$("#passwdConfirm_msg").removeClass("hidden").text("비밀번호가 일치하지 않습니다");
+		$(".passwd_confirm").addClass("warn").focus();
+	} else {
+		$(".passwd_confirm").removeClass("warn");
+		$("#passwdConfirm_msg").addClass("hidden");
 	}
 }
 
