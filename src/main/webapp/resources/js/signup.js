@@ -32,7 +32,7 @@ function chkId(userId) {
 		alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
 		$(".id").val("");
 	}
-	
+
 	function idMsg(result) {
 		if (result == "OK")
 			alert("사용 가능한 아이디입니다");
@@ -43,7 +43,6 @@ function chkId(userId) {
 	}
 }
 
-
 function chkNull() {
 	if ($(".id").val() == ""
 		|| $(".passwd").val() == ""
@@ -53,7 +52,7 @@ function chkNull() {
 		|| $("input[type='radio']").prop("checked")
 		|| $(".age").val() == ""
 		|| $(".nickname").val() == "") {
-		checkVal();
+		chkVal();
 		return;
 	} else if ($(".id").val() != ""
 		&& $(".passwd").val() != ""
@@ -88,7 +87,7 @@ function pwdConfrimChk() {
 	}
 }
 
-function checkVal() {
+function chkVal() {
 
 	if ($(".id").val() == "") {
 		$("#id_msg").removeClass("hidden");
@@ -98,7 +97,6 @@ function checkVal() {
 			$("#id_msg").addClass("hidden");
 			$(".id").removeClass("warn");
 		});
-
 		return
 	}
 
