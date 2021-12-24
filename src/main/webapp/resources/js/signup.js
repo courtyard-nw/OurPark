@@ -10,20 +10,39 @@ $(function () {
 	$(".id").change(() => {
 		let userId = $(".id").val();
 
-		$.ajax("checkId?id=" + userId, {
-			method: "GET",
-			success: result => {
-				idMsg(result);
-			},
-			error: xhr => {
-				idErrMsg(xhr);
-			}
-		})
+		chkId(userId);
 	});
 
 	//$(".submit").click(() => chkNull());
 
 })
+
+function chkId(userId) {
+	$.ajax("checkId?id=" + userId, {
+		method: "GET",
+		success: result => {
+			idMsg(result);
+		},
+		error: xhr => {
+			idErrMsg(xhr);
+		}
+	})
+
+	function idErrMsg(xhr) {
+		alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
+		$(".id").val("");
+	}
+	
+	function idMsg(result) {
+		if (result == "OK")
+			alert("사용 가능한 아이디입니다");
+		else {
+			alert("사용 중인 아이디입니다");
+			$(".id").val("");
+		}
+	}
+}
+
 
 function chkNull() {
 	if ($(".id").val() == ""
@@ -46,20 +65,6 @@ function chkNull() {
 		&& $(".nickname").val() != "") {
 		alert("good!");
 		$(".submit").removeAttr("type").click();
-	}
-}
-
-function idErrMsg(xhr) {
-	alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
-	$(".id").val("");
-}
-
-function idMsg(result) {
-	if (result == "OK")
-		alert("사용 가능한 아이디입니다");
-	else {
-		alert("사용 중인 아이디입니다");
-		$(".id").val("");
 	}
 }
 
