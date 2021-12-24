@@ -13,26 +13,6 @@ $(function () {
 		pwdConfrimChk();
 	});
 
-	/**
-					
-		
-	$(".passwd").on({
-		"change" : function() {
-			if( !regx.test($(".passwd").val()) ) {
-				$("#passwd_msg").removeClass("hidden").text("비밀번호 형식을 확인해주세요");
-				$(".passwd").addClass("warn").focus();
-			}
-			},
-			
-		"focusout" : function() {
-					$(".passwd").removeClass("warn");
-					$("#passwd_msg").addClass("hidden");
-			return;
-				}	
-	}); **/
-
-
-
 	$(".id").change(() => {
 		let userId = $(".id").val();
 
@@ -47,31 +27,33 @@ $(function () {
 		})
 	});
 
-	/* $(".submit").click(function() {
-	   if($(".id").val() == ""
-			|| $(".passwd").val() == ""
-				  || $(".passwd_confirm").val() == ""
-				  || $(".name").val() == ""
-				  || $(".address").val() == ""
-				  || $("input[type='radio']").prop("checked")
-				  || $(".age").val() == ""
-				  || $(".nickname").val() == "") {
-			 checkVal();
-			return;
-	   } else if($(".id").val() != ""
-			&& $(".passwd").val() != ""
-				  && $(".passwd_confirm").val() != ""
-				  && $(".name").val() != ""
-				  && $(".address").val() != ""
-				  && $("input[type='radio']").prop("checked")
-				  && $(".age").val() != ""
-				  && $(".nickname").val() != "") {
-		  alert("good!");
-			  $(".submit").removeAttr("type").click();
-	  }
-	}); */
+	//$(".submit").click(() => chkNull());
 
 })
+
+function chkNull() {
+	if ($(".id").val() == ""
+		|| $(".passwd").val() == ""
+		|| $(".passwd_confirm").val() == ""
+		|| $(".name").val() == ""
+		|| $(".address").val() == ""
+		|| $("input[type='radio']").prop("checked")
+		|| $(".age").val() == ""
+		|| $(".nickname").val() == "") {
+		checkVal();
+		return;
+	} else if ($(".id").val() != ""
+		&& $(".passwd").val() != ""
+		&& $(".passwd_confirm").val() != ""
+		&& $(".name").val() != ""
+		&& $(".address").val() != ""
+		&& $("input[type='radio']").prop("checked")
+		&& $(".age").val() != ""
+		&& $(".nickname").val() != "") {
+		alert("good!");
+		$(".submit").removeAttr("type").click();
+	}
+}
 
 function idErrMsg(xhr) {
 	alert(`아이디 중복확인 중 오류 발생: ${xhr.statusText}`);
