@@ -1,21 +1,23 @@
 $(function () {
 
-	$(".cancel").click(() => {
-		history.back();
-	});
+	$(".cancel").click(() => history.back());
 
-	$("#keyword").keydown(function (event) {
-		if (event.keycode == 13 || event.which == 13)
-			$("form").attr("onsubmit", "searchPlaces(); return false;");
-		$("#submitBtn").submit();
-	});
+	$("#keyword").keydown(() => setOnsubmit(event));
 
-	$("#keyword").keyup(function (event) {
-		if (event.keycode == 13 || event.which == 13 || event.keycode == 27 || event.which == 27)
-			$("form").removeAttr("onsubmit");
-	});
+	$("#keyword").keyup(() => removeOnsubmit(event));
 
 })
+
+function setOnsubmit(event) {
+	if (event.keycode == 13 || event.which == 13)
+		$("form").attr("onsubmit", "searchPlaces(); return false;");
+	$("#submitBtn").submit();
+}
+
+function removeOnsubmit(event) {
+	if (event.keycode == 13 || event.which == 13 || event.keycode == 27 || event.which == 27)
+		$("form").removeAttr("onsubmit");
+}
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 1. 객체 생성 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
