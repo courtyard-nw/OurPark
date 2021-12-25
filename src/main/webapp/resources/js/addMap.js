@@ -143,23 +143,3 @@
 	    map.setCenter(placePosition);
 		marker.setPosition(placePosition);
 	}
-	
-		// const form = $("#reviewForm");
-		// const formData = new FormData(form);
-		// const item = {
-		// 	input1: ,
-
-		// }
-		// $.ajax({
-		// 	type: "GET",
-		// 	url: "add2",
-		// 	contentType: "application/json",
-		// 	dataType: "json",
-		// 	data: JSON.stringify(formData),
-		// 	success: function(result) {
-		// 		alert("result")
-		// 	},
-		// 	error: xhr => alert(`오류 발생: ${xhr.statusText}`)
-
-		// });
-
