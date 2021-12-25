@@ -75,6 +75,7 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 	// 클릭한 위도, 경도 정보를 가져옵니다 
 	var latlng = mouseEvent.latLng;
 
+	// 위도, 경도로 장소 이름을 검색
 	geocoder.coord2Address(latlng.getLng(), latlng.getLat(), function (result, status) {
 		if (status === kakao.maps.services.Status.OK) {
 			var addrInput = document.getElementById("keyword");
