@@ -27,10 +27,6 @@ import kr.ac.ourpark.util.Uploader;
 @Controller
 public class RootController {
 	final String path = "review/";
-	final String uploadPath = "D:///jihun/upload/";
-	final String uploadPathMac = "file:///Users/jihunjang/Desktop/lecture/upload/";
-	final String uploadPathSchool = "D:///upload/";
-	
 	
 	@Autowired
 	MemberService memberService;
