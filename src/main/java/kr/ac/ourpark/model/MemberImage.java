@@ -1,6 +1,8 @@
 package kr.ac.ourpark.model;
 
-public class MemberImage {
+import kr.ac.ourpark.util.UploadFile;
+
+public class MemberImage implements UploadFile{
 	private int code;
 	private String member;
 	private String filename;

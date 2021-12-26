@@ -21,6 +21,7 @@ import kr.ac.ourpark.model.Member;
 import kr.ac.ourpark.model.MemberImage;
 import kr.ac.ourpark.model.ReviewImage;
 import kr.ac.ourpark.service.MemberService;
+import kr.ac.ourpark.util.Uploader;
 
 @RequestMapping("/")
 @Controller
@@ -52,22 +53,10 @@ public class RootController {
 	public String signup(Member member, @RequestParam("memberImage") List<MultipartFile> memberImage, HttpSession session) {
 		
 		try {
-			List<MemberImage> images = new ArrayList<MemberImage>();
-
-			for (MultipartFile file : memberImage) {
-				if (!file.isEmpty()) {
-					String filename = file.getOriginalFilename();
-					String uuid = UUID.randomUUID().toString();
-
-					file.transferTo(new File(uploadPathSchool + uuid + "_" + filename));
-
-					MemberImage image = new MemberImage();
-					image.setFilename(filename);
-					image.setUuid(uuid);
-
-					images.add(image);
-				}
-			}
+			Uploader<MemberImage> uploader = new Uploader<>();
+			
+			List<MemberImage> images = uploader.makeList(memberImage, MemberImage.class);
+			
 			member.setImages(images);
 					
 			memberService.signup(member);
