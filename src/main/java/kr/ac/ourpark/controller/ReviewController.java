@@ -36,9 +36,6 @@ import kr.ac.ourpark.util.Uploader;
 @Controller
 public class ReviewController {
 	final String path = "review/";
-	final String upldPathHome = "D:///jihun/upload/";
-	final String upldPathMac = "/Users/jihunjang/Desktop/upload/";
-	final String upldPathSchool = "D:///upload/";
 
 	@Autowired
 	ReviewService service;
