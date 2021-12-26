@@ -1,6 +1,8 @@
 package kr.ac.ourpark.model;
 
-public class ReviewImage {
+import kr.ac.ourpark.util.UploadFile;
+
+public class ReviewImage implements UploadFile{
 	private int code;
 	private int review;
 	private String placeName;
