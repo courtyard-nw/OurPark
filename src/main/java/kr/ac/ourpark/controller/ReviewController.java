@@ -48,22 +48,11 @@ public class ReviewController {
 			@RequestParam("reviewImage") List<MultipartFile> reviewImage) {
 
 		try {
-			List<ReviewImage> images = new ArrayList<ReviewImage>();
+			
+			Uploader<ReviewImage> uploader = new Uploader<>();
 
-			for (MultipartFile file : reviewImage) {
-				if (!file.isEmpty()) {
-					String filename = file.getOriginalFilename();
-					String uuid = UUID.randomUUID().toString();
-
-					file.transferTo(new File(upldPathMac + uuid + "_" + filename));
-
-					ReviewImage image = new ReviewImage();
-					image.setFilename(filename);
-					image.setUuid(uuid);
-
-					images.add(image);
-				}
-			}
+			List<ReviewImage> images = uploader.makeList(reviewImage, ReviewImage.class);
+			
 			item.setImages(images);
 			item.setCode(code);
 
