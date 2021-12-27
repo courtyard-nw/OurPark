@@ -218,5 +218,5 @@ function hideBtn() {
 
 function sendToMap() {
 	const keyword = $(".name").text();
-	$("#logo").attr("href", `map?keyword=${keyword}`);
+	$("#logo").attr("href", `../map/map?keyword=${keyword}`);
 }
