@@ -78,6 +78,41 @@ public class ReviewController {
 
 		return "redirect:../list";
 	}
+	
+	@PostMapping("/add")
+	public String add(Review item, @RequestParam("reviewImage") List<MultipartFile> reviewImage,
+			@SessionAttribute(required = false) Member member, HttpSession session) {
+
+		try {
+			Uploader<ReviewImage> uploader = new Uploader<>();
+
+			List<ReviewImage> images = uploader.makeList(reviewImage, ReviewImage.class);
+			
+			item.setImages(images);
+
+			if (session.getAttribute("member") != null)
+				item.setMember(member.getId());
+
+			service.add(item);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "redirect:../";
+	}
+
+	@PostMapping("/addInfo")
+	public String addInfo(Review item, HttpSession session) {
+
+		session.setAttribute("placeAddr", item);
+
+		return path + "addInfo";
+	}
+
+	@RequestMapping("/addAddr")
+	public String addAddr() {
+		return path + "addAddr";
+	}
 
 	@RequestMapping("/list")
 	public String list(Model model, HttpSession session) {
@@ -130,61 +165,6 @@ public class ReviewController {
 	@RequestMapping("/review")
 	public String review() {
 		return path + "review";
-	}
-
-	@ResponseBody
-	@PostMapping("/sendPlace")
-	public String review(@RequestBody Place item, HttpSession session, Review review, ReviewImage img, Model model) {
-
-		session.setAttribute("place", item);
-
-		String placeName = item.getPlaceName();
-		System.out.println("ajax success: " + placeName);
-
-		return "sendPlace";
-	}
-
-	@PostMapping("/add")
-	public String add(Review item, @RequestParam("reviewImage") List<MultipartFile> reviewImage,
-			@SessionAttribute(required = false) Member member, HttpSession session) {
-
-		try {
-			Uploader<ReviewImage> uploader = new Uploader<>();
-
-			List<ReviewImage> images = uploader.makeList(reviewImage, ReviewImage.class);
-			
-			item.setImages(images);
-
-			if (session.getAttribute("member") != null)
-				item.setMember(member.getId());
-
-			service.add(item);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return "redirect:../";
-	}
-
-	@PostMapping("/addInfo")
-	public String addInfo(Review item, HttpSession session) {
-
-		session.setAttribute("placeAddr", item);
-
-		return path + "addInfo";
-	}
-
-	@RequestMapping("/addAddr")
-	public String addAddr() {
-		return path + "addAddr";
-	}
-
-	@RequestMapping("/map")
-	public String map(String keyword, HttpSession session) {
-
-		session.setAttribute("keyword", keyword);
-
-		return path + "map";
 	}
 
 }
