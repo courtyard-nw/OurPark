@@ -29,7 +29,7 @@
         			<img src="../upload/${sessionScope.img.uuid}_${sessionScope.img.filename}" id="userImg" class="userImg" alt="회원사진">	
        			</c:if>
                 <div id="header_input">
-                    <form action="../review/map?keyword=" method="get">
+                    <form action="../map/map?keyword=" method="get">
                         <div id="search-box"></div>
                         <input type="text" placeholder="동네 이름, 궁금한 장소를 입력하세요" name="keyword">
                         <!-- <a href="#"><img src="img/search_button.png" id="search_button"></a> -->
