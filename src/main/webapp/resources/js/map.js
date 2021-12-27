@@ -26,7 +26,7 @@ $(function () {
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
-	$.ajax("reviewInfo?placeName=" + item.placeName, {
+	$.ajax("../review/reviewInfo?placeName=" + item.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
