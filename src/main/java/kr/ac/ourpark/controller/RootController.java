@@ -26,7 +26,6 @@ import kr.ac.ourpark.util.Uploader;
 @RequestMapping("/")
 @Controller
 public class RootController {
-	final String path = "review/";
 	
 	@Autowired
 	MemberService memberService;
@@ -79,6 +78,7 @@ public class RootController {
 			
 			session.setAttribute("member", member);
 			session.setAttribute("img", img);
+			
 			System.out.println("이미지: " +  img.getMember() + " " + img.getFilename());
 						
 			return "redirect:.";
