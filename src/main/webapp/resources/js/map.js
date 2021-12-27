@@ -51,7 +51,7 @@ function getReviewInfo(index) {
 function getImage(index) {
 	let img = `.img${index}`;
 
-	$.ajax("getImage?placeName=" + item.placeName, {
+	$.ajax("../review/getImage?placeName=" + item.placeName, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
