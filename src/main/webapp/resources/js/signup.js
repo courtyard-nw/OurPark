@@ -87,16 +87,6 @@ function pwdConfrimChk() {
 	}
 }
 
-function showMsg(name, msg) {
-	$(msg).removeClass("hidden");
-	$(name).addClass("warn").focus();
-
-	$(name).focusout(() => {
-		$(msg).addClass("hidden");
-		$(name).removeClass("warn");
-	});
-}
-
 function chkVal() {
 
 	if ($(".id").val() == "") {
@@ -110,69 +100,57 @@ function chkVal() {
 		let msg = "#passwd_msg";
 
 		showMsg(name, msg);
-	}
 
-	if ($(".passwd_confirm").val() == "") {
-		$("#passwdConfirm_msg").removeClass("hidden");
-		$(".passwd_confirm").addClass("warn").focus();
+	} else if ($(".passwd_confirm").val() == "") {
+		
+		let name = ".passwd_confirm"
+		let msg = "#passwdConfirm_msg";
 
-		$(".passwd_confirm").focusout(function () {
-			$(".passwd_confirm").removeClass("warn");
-			$("#passwdConfirm_msg").addClass("hidden");
-		});
-		return
-	}
+		showMsg(name, msg);
 
-	if ($(".name").val() == "") {
-		$("#name_msg").removeClass("hidden");
-		$(".name").addClass("warn").focus();
+	} else if ($(".name").val() == "") {
+		
+		let name = ".name"
+		let msg = "#name_msg";
 
-		$(".name").focusout(function () {
-			$(".name").removeClass("warn");
-			$("#name_msg").addClass("hidden");
-		});
-		return
-	}
+		showMsg(name, msg);
 
-	if ($(".address").val() == "") {
-		$("#address_msg").removeClass("hidden");
-		$(".address").addClass("warn").focus();
+	} else if ($(".address").val() == "") {
+		
+		let name = ".address"
+		let msg = "#address_msg";
 
-		$(".address").focusout(function () {
-			$(".address").removeClass("warn");
-			$("#address_msg").addClass("hidden");
-		});
-		return
-	}
+		showMsg(name, msg);
 
-	if (!$("input[value='male']").prop("checked") && !$("input[value='female']").prop("checked") && !$("input[value='third']").prop("checked")) {
+	} else if (!$("input[value='male']").prop("checked") && !$("input[value='female']").prop("checked") && !$("input[value='third']").prop("checked")) {
 		$("#gender_msg").removeClass("hidden");
 		$("input[value='male']").focus();
 
 		$("input[value='male']").focusout(() => $("#gender_msg").addClass("hidden"));
 
-		return
+	} else if ($(".age").val() == "") {
+		
+		let name = ".age"
+		let msg = "#age_msg";
+
+		showMsg(name, msg);
+
+	} else if ($(".nickname").val() == "") {
+		
+		let name = ".nickname"
+		let msg = "#nickname_msg";
+
+		showMsg(name, msg);
+
 	}
+}
 
-	if ($(".age").val() == "") {
-		$("#age_msg").removeClass("hidden");
-		$(".age").addClass("warn").focus();
+function showMsg(name, msg) {
+	$(msg).removeClass("hidden");
+	$(name).addClass("warn").focus();
 
-		$(".age").focusout(function () {
-			$(".age").removeClass("warn");
-			$("#age_msg").addClass("hidden");
-		});
-		return
-	}
-
-	if ($(".nickname").val() == "") {
-		$("#nickname_msg").removeClass("hidden");
-		$(".nickname").addClass("warn").focus();
-
-		$(".nickname").focusout(function () {
-			$(".nickname").removeClass("warn");
-			$("#nickname_msg").addClass("hidden");
-		});
-		return
-	}
+	$(name).focusout(() => {
+		$(msg).addClass("hidden");
+		$(name).removeClass("warn");
+	});
 }
