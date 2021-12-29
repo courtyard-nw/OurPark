@@ -13,7 +13,7 @@ $(function () {
 		chkId(userId);
 	});
 
-	//$(".submit").click(() => chkNull());
+	$(".submit").click(() => chkNull());
 
 })
 
@@ -87,28 +87,29 @@ function pwdConfrimChk() {
 	}
 }
 
+function showMsg(name, msg) {
+	$(msg).removeClass("hidden");
+	$(name).addClass("warn").focus();
+
+	$(name).focusout(() => {
+		$(msg).addClass("hidden");
+		$(name).removeClass("warn");
+	});
+}
+
 function chkVal() {
 
 	if ($(".id").val() == "") {
-		$("#id_msg").removeClass("hidden");
-		$(".id").addClass("warn").focus();
+		let name = ".id";
+		let msg = "#id_msg";
+		
+		showMsg(name, msg);
+		
+	} else if ($(".passwd").val() == "") {
+		let name = ".passwd"
+		let msg = "#passwd_msg";
 
-		$(".id").focusout(function () {
-			$("#id_msg").addClass("hidden");
-			$(".id").removeClass("warn");
-		});
-		return
-	}
-
-	if ($(".passwd").val() == "") {
-		$("#passwd_msg").removeClass("hidden");
-		$(".passwd").addClass("warn").focus();
-
-		$(".passwd").focusout(function () {
-			$(".passwd").removeClass("warn");
-			$("#passwd_msg").addClass("hidden");
-		});
-		return
+		showMsg(name, msg);
 	}
 
 	if ($(".passwd_confirm").val() == "") {
