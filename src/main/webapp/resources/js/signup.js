@@ -68,25 +68,15 @@ function chkNull() {
 }
 
 function pwdChk() {
-	let msg = "#passwd_msg";
+	let msgId = "#passwd_msg";
 	let name = ".passwd";
+	let	msg = "비밀번호 형식을 확인해주세요";
 
 	if (!regx.test($(".passwd").val()))
-		show(name, msg);
+		show(name, msgId, msg);
 	else
-		hide(name, msg);
+		hide(name, msgId);
 }
-
-function show(name, msg) {
-	$(msg).removeClass("hidden").text("비밀번호 형식을 확인해주세요");
-	$(name).addClass("warn").val("").focus();
-}
-
-function hide(name, msg) {
-	$(name).removeClass("warn");
-	$(msg).addClass("hidden");
-}
-
 
 function pwdConfrimChk() {
 	if ($(".passwd").val() != $(".passwd_confirm").val()) {
@@ -96,6 +86,16 @@ function pwdConfrimChk() {
 		$(".passwd_confirm").removeClass("warn");
 		$("#passwdConfirm_msg").addClass("hidden");
 	}
+}
+
+function show(name, msgId, msg) {
+	$(msgId).removeClass("hidden").text(msg);
+	$(name).addClass("warn").val("").focus();
+}
+
+function hide(name, msgId) {
+	$(name).removeClass("warn");
+	$(msgId).addClass("hidden");
 }
 
 function chkVal() {
