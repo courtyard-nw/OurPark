@@ -18,6 +18,7 @@ $(function () {
 		let input2 = $("input[type='password']").val();
 		let input3 = $("input[type='number']").val();
 
+		chkNull(input1, input2, input3);
 	});
 
 })
@@ -45,6 +46,14 @@ function chkId(userId) {
 			alert("사용 중인 아이디입니다");
 			$(".id").val("");
 		}
+	}
+}
+
+function chkNull(val1, val2, val3) {
+	if (isEmpty(val1) || isEmpty(val2) || isEmpty(val3) || $("input[type='radio']").prop("checked")) {
+		chkVal();
+	} else {
+		$("#signupForm").submit();
 	}
 }
 
