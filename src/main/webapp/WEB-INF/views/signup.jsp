@@ -100,7 +100,7 @@
 	                            
 	            <div class="btn-group mx-0 mt-5">
 	                <a href="#"><div class="btn btn-outline-secondary btn-lg cancel">취소</div></a>
-	                <button class="btn btn-success btn-lg rounded-5 submit">가입</button>
+	                <button class="btn btn-success btn-lg rounded-5 submit" type="button">가입</button>
 	            </div>
 	        </form>
 	    </section>

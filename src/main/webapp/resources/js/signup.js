@@ -13,7 +13,9 @@ $(function () {
 		chkId(userId);
 	});
 
-	$(".submit").click(() => chkNull());
+	$(".submit").click(() => {
+
+	});
 
 })
 
@@ -43,34 +45,18 @@ function chkId(userId) {
 	}
 }
 
-function chkNull() {
-	if ($(".id").val() == ""
-		|| $(".passwd").val() == ""
-		|| $(".passwd_confirm").val() == ""
-		|| $(".name").val() == ""
-		|| $(".address").val() == ""
-		|| $("input[type='radio']").prop("checked")
-		|| $(".age").val() == ""
-		|| $(".nickname").val() == "") {
-		chkVal();
-		return;
-	} else if ($(".id").val() != ""
-		&& $(".passwd").val() != ""
-		&& $(".passwd_confirm").val() != ""
-		&& $(".name").val() != ""
-		&& $(".address").val() != ""
-		&& $("input[type='radio']").prop("checked")
-		&& $(".age").val() != ""
-		&& $(".nickname").val() != "") {
-		alert("good!");
-		$(".submit").removeAttr("type").click();
+function isEmpty(str) {
+	if (typeof str == "undefined" || str == null || str == "") {
+		return true;
+	} else {
+		return false;
 	}
 }
 
 function pwdChk() {
 	let msgId = "#passwd_msg";
 	let name = ".passwd";
-	let	msg = "비밀번호 형식을 확인해주세요";
+	let msg = "비밀번호 형식을 확인해주세요";
 
 	if (!regx.test($(".passwd").val()))
 		show(name, msgId, msg);
@@ -81,7 +67,7 @@ function pwdChk() {
 function pwdConfrimChk() {
 	let msgId = "#passwdConfirm_msg";
 	let name = ".passwd_confirm";
-	let	msg = "비밀번호가 일치하지 않습니다";
+	let msg = "비밀번호가 일치하지 않습니다";
 
 	if ($(".passwd").val() != $(".passwd_confirm").val()) {
 		show(name, msgId, msg);
@@ -105,9 +91,9 @@ function chkVal() {
 	if ($(".id").val() == "") {
 		let name = ".id";
 		let msg = "#id_msg";
-		
+
 		showMsg(name, msg);
-		
+
 	} else if ($(".passwd").val() == "") {
 		let name = ".passwd"
 		let msg = "#passwd_msg";
@@ -115,21 +101,21 @@ function chkVal() {
 		showMsg(name, msg);
 
 	} else if ($(".passwd_confirm").val() == "") {
-		
+
 		let name = ".passwd_confirm"
 		let msg = "#passwdConfirm_msg";
 
 		showMsg(name, msg);
 
 	} else if ($(".name").val() == "") {
-		
+
 		let name = ".name"
 		let msg = "#name_msg";
 
 		showMsg(name, msg);
 
 	} else if ($(".address").val() == "") {
-		
+
 		let name = ".address"
 		let msg = "#address_msg";
 
@@ -142,14 +128,14 @@ function chkVal() {
 		$("input[value='male']").focusout(() => $("#gender_msg").addClass("hidden"));
 
 	} else if ($(".age").val() == "") {
-		
+
 		let name = ".age"
 		let msg = "#age_msg";
 
 		showMsg(name, msg);
 
 	} else if ($(".nickname").val() == "") {
-		
+
 		let name = ".nickname"
 		let msg = "#nickname_msg";
 
