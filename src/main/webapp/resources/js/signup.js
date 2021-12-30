@@ -14,6 +14,9 @@ $(function () {
 	});
 
 	$(".submit").click(() => {
+		let input1 = $("input[type='text']").val();
+		let input2 = $("input[type='password']").val();
+		let input3 = $("input[type='number']").val();
 
 	});
 
