@@ -21,12 +21,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional
 	public void signup(Member member) {
-		dao.signup(member);
-		
-		for(MemberImage image : member.getImages()) {
-			image.setMember(member.getId());
+		if(member != null) {
+			dao.signup(member);
 			
-			memberImageDao.add(image);
+			for(MemberImage image : member.getImages()) {
+				image.setMember(member.getId());
+				
+				memberImageDao.add(image);
+			}
 		}
 	}
 
