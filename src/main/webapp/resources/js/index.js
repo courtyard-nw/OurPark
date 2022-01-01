@@ -1,7 +1,6 @@
 $(function() {
 	$("#user").click(function() {
 		$(".user_menu").removeClass("hidden");
-
 	});
 
 	$("#user_menu_bg").click(function() {
@@ -16,5 +15,15 @@ $(function() {
 			$("#searchBtn").attr("type", "submit");
 		}
 	});
-
+	
+	signupMsg();
 })
+
+function signupMsg() {
+
+	var signupModal = new bootstrap.Modal(document.getElementById('signupModal'), {
+		keyboard: false
+	  })
+
+	  signupModal.show();
+}

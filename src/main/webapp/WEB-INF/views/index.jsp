@@ -4,7 +4,6 @@
 		<html>
 
 		<head>
-
 			<!-- Bootstrap css -->
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
@@ -32,9 +31,7 @@
 				<div class="header">
 					<div id="header_bg" style="background: url(resources/img/header_background_darker.png) no-repeat;">
 					</div>
-					<c:if test="${sessionScope.signup != null}">
-						<div href="#" data-bs-toggle="modal" data-bs-target="#signupModal" id="signupMsg"></div>
-					</c:if>
+					
 					<c:if test="${sessionScope.item != null}">
 						<p>${sessionScope.item}님</p>
 					</c:if>
@@ -154,45 +151,29 @@
 				</div>
 			</div>
 			
-			<div class="modal fade" tabindex="-1" role="dialog" id="" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content rounded-5 shadow">
-						<button type="button" class="btn-close p-3 pt-4 pb-0" data-bs-dismiss="modal" aria-label="Close"></button>
-						<div class="modal-header pt-0 pb-1 border-bottom-0 justify-content-center">
-							<h3 class="mb-0 fs-4" id="modal-login">회원가입 완료</h3>
-						</div>
+			<c:if test="${sessionScope.signup != null}">
+				<div class="modal fade" tabindex="-1" role="dialog" id="signupModal" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content rounded-5 shadow">
+							<button type="button" class="btn-close p-3 pt-4 pb-0" data-bs-dismiss="modal" aria-label="Close"></button>
+							<div class="modal-header pt-0 pb-1 border-bottom-0 justify-content-center">
+								<h3 class="mb-0 fs-4" id="modal-login">회원가입 완료</h3>
+							</div>
 							<hr class="my-1">
-						<div class="text-center p-4 pb-4">
-							<p class="fs-3 fw-bold">동네 산책에 오신 것을 환영합니다</p>
-							<p class="fs-5 pt-2">이제 우리 주변의 공적 공간을 살펴보세요!</p>
-						</div>
-						<div class="modal-body p-5 pt-0 pb-3">
-							<button type="button" class="w-100 mb-2 btn btn-lg rounded-4 btn-success" data-bs-dismiss="modal" aria-label="Close">확인</button>
+							<div class="text-center p-4 pb-4">
+								<p class="fs-3 fw-bold">동네 산책에 오신 것을 환영합니다</p>
+								<p class="fs-5 pt-2">이제 우리 주변의 공적 공간을 살펴보세요!</p>
+							</div>
+							<div class="modal-body p-5 pt-0 pb-3">
+								<button type="button" class="w-100 mb-2 btn btn-lg rounded-4 btn-success" data-bs-dismiss="modal" aria-label="Close">확인</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="modal fade" tabindex="-1" role="dialog" id="signupModal" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content rounded-5 shadow">
-						<button type="button" class="btn-close p-3 pt-4 pb-0" data-bs-dismiss="modal" aria-label="Close"></button>
-						<div class="modal-header pt-0 pb-1 border-bottom-0 justify-content-center">
-							<h3 class="mb-0 fs-4" id="modal-login">회원가입 완료</h3>
-						</div>
-							<hr class="my-1">
-						<div class="text-center p-4 pb-4">
-							<p class="fs-3 fw-bold">동네 산책에 오신 것을 환영합니다</p>
-							<p class="fs-5 pt-2">이제 우리 주변의 공적 공간을 살펴보세요!</p>
-						</div>
-						<div class="modal-body p-5 pt-0 pb-3">
-							<button type="button" class="w-100 mb-2 btn btn-lg rounded-4 btn-success" data-bs-dismiss="modal" aria-label="Close">확인</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:if>
 			
 		</body>
+		
 		<jsp:include page="include/body.jsp"></jsp:include>
 		
 		<script src="resources/js/index.js"></script>
