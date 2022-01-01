@@ -56,11 +56,14 @@ public class RootController {
 					
 			memberService.signup(member);
 			
+			session.setAttribute("signup", member.getId());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return "redirect:./";
+		
 	}
 	
 	
