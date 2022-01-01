@@ -24,30 +24,6 @@
 				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 			<link rel="stylesheet" href="resources/css/index.css">
 
-
-			<script>
-				$(function () {
-					$("#user").click(function () {
-						$(".user_menu").removeClass("hidden");
-
-					});
-
-					$("#user_menu_bg").click(function () {
-						$(".user_menu").addClass("hidden");
-					});
-
-					$("#searchBtn").click(() => {
-						if ($("input[name='keyword']").val() == '') {
-							$("#searchBtn").attr("type", "button");
-							alert("키워드를 입력해주세요!");
-						} else {
-							$("#searchBtn").attr("type", "submit");
-						}
-					});
-
-				})
-			</script>
-
 			<title>동네산책</title>
 		</head>
 
@@ -56,6 +32,9 @@
 				<div class="header">
 					<div id="header_bg" style="background: url(resources/img/header_background_darker.png) no-repeat;">
 					</div>
+					<c:if test="${sessionScope.signup != null}">
+						<div href="#" data-bs-toggle="modal" data-bs-target="#signupModal" id="signupMsg"></div>
+					</c:if>
 					<c:if test="${sessionScope.item != null}">
 						<p>${sessionScope.item}님</p>
 					</c:if>
@@ -215,5 +194,7 @@
 			
 		</body>
 		<jsp:include page="include/body.jsp"></jsp:include>
+		
+		<script src="resources/js/index.js"></script>
 
 		</html>
