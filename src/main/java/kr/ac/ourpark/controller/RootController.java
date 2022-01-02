@@ -101,7 +101,6 @@ public class RootController {
 		return "redirect:.";
 	}
 	
-	
 	@GetMapping("/myPage")
 	public String myPage() {
 		return "myPage";
@@ -117,7 +116,15 @@ public class RootController {
 	}
 	
 	@RequestMapping("/")
-	public String index() {
+	public String index(HttpSession session) {
+		
+		return "index";
+	}
+	
+	@RequestMapping("/hide")
+	public String hide(HttpSession session) {
+		session.removeAttribute("signup");
+		
 		return "index";
 	}
 }

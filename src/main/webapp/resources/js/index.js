@@ -16,14 +16,27 @@ $(function() {
 		}
 	});
 	
-	signupMsg();
+	showMsg();
+
+	$("#hideBtn").click(() => {
+		hideMsg();
+	})
 })
 
-function signupMsg() {
+function showMsg() {
 
 	var signupModal = new bootstrap.Modal(document.getElementById('signupModal'), {
 		keyboard: false
 	  })
 
 	  signupModal.show();
+}
+
+function hideMsg() {
+
+	var signupModal = new bootstrap.Modal(document.getElementById('signupModal'), {
+		keyboard: false
+	  })
+
+	  signupModal.hide();
 }
