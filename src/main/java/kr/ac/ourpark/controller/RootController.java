@@ -45,6 +45,7 @@ public class RootController {
 	}
 	
 	@PostMapping("/signup")
+	@ResponseBody
 	public String signup(Member member, @RequestParam("memberImage") List<MultipartFile> memberImage, HttpSession session) {
 		
 		try {
@@ -56,13 +57,15 @@ public class RootController {
 					
 			memberService.signup(member);
 			
-			session.setAttribute("signup", member.getId());
+			//session.setAttribute("signup", member.getId());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "redirect:./";
+		//return "redirect";
+		
+		return "result";
 		
 	}
 	
@@ -117,13 +120,6 @@ public class RootController {
 	
 	@RequestMapping("/")
 	public String index(HttpSession session) {
-		
-		return "index";
-	}
-	
-	@RequestMapping("/hide")
-	public String hide(HttpSession session) {
-		session.removeAttribute("signup");
 		
 		return "index";
 	}
