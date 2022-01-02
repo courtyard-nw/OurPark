@@ -24,12 +24,13 @@ $(function() {
 })
 
 function showMsg() {
+	if(sessionStorage.getItem("signup") != null) {
+		var signupModal = new bootstrap.Modal(document.getElementById('signupModal'), {
+			keyboard: false
+		})
 
-	var signupModal = new bootstrap.Modal(document.getElementById('signupModal'), {
-		keyboard: false
-	  })
-
-	  signupModal.show();
+		signupModal.show();
+	}
 }
 
 function hideMsg() {
@@ -39,4 +40,7 @@ function hideMsg() {
 	  })
 
 	  signupModal.hide();
+	  
+	  sessionStorage.removeItem("signup");
+	  
 }
