@@ -53,7 +53,6 @@ function chkNull(val1, val2, val3) {
 	if (isEmpty(val1) || isEmpty(val2) || isEmpty(val3) || $("input[type='radio']").prop("checked")) {
 		chkVal();
 	} else {
-		//$("#signupForm").submit();
 
 		signup();
 	}
@@ -65,6 +64,26 @@ function isEmpty(str) {
 	} else {
 		return false;
 	}
+}
+
+function signup() {
+	const formData = new FormData($("#signupForm")[0]);
+
+	$.ajax({
+		type: "POST",
+		url: "signup",
+		contentType: false,
+		processData: false,
+		data: formData,
+		success: function (result) {
+			sessionStorage.setItem("signup", 1);
+			
+			location.href = "../ourpark/";
+
+			return;
+		},
+		error: xhr => alert(`오류 발생: ${xhr.statusText}`)
+	});
 }
 
 function pwdChk() {
@@ -165,25 +184,5 @@ function showMsg(name, msg) {
 	$(name).focusout(() => {
 		$(msg).addClass("hidden");
 		$(name).removeClass("warn");
-	});
-}
-
-function signup() {
-	const formData = new FormData($("#signupForm")[0]);
-
-	$.ajax({
-		type: "POST",
-		url: "signup",
-		contentType: false,
-		processData: false,
-		data: formData,
-		success: function (result) {
-			sessionStorage.setItem("signup", 1);
-			
-			location.href = "../ourpark/";
-
-			return;
-		},
-		error: xhr => alert(`오류 발생: ${xhr.statusText}`)
 	});
 }
