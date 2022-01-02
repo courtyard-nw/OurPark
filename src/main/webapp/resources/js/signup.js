@@ -16,7 +16,7 @@ $(function () {
 	$(".submit").click(() => {
 		let input1 = $("input[type='text']").val();
 		let input2 = $("input[type='password']").val();
-		let input3 = $("input[type='number']").val();
+		let input3 = $("input[type='number']").val();		
 
 		chkNull(input1, input2, input3);
 	});
@@ -53,7 +53,9 @@ function chkNull(val1, val2, val3) {
 	if (isEmpty(val1) || isEmpty(val2) || isEmpty(val3) || $("input[type='radio']").prop("checked")) {
 		chkVal();
 	} else {
-		$("#signupForm").submit();
+		//$("#signupForm").submit();
+
+		signup();
 	}
 }
 
@@ -163,5 +165,25 @@ function showMsg(name, msg) {
 	$(name).focusout(() => {
 		$(msg).addClass("hidden");
 		$(name).removeClass("warn");
+	});
+}
+
+function signup() {
+	const formData = new FormData($("#signupForm")[0]);
+
+	$.ajax({
+		type: "POST",
+		url: "signup",
+		contentType: false,
+		processData: false,
+		data: formData,
+		success: function (result) {
+			sessionStorage.setItem("signup", 1);
+			
+			location.href = "../ourpark/";
+
+			return;
+		},
+		error: xhr => alert(`오류 발생: ${xhr.statusText}`)
 	});
 }
