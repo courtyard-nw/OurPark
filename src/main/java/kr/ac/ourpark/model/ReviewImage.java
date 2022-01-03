@@ -5,7 +5,7 @@ import kr.ac.ourpark.util.UploadFile;
 public class ReviewImage implements UploadFile{
 	private int code;
 	private int review;
-	private String placeName;
+	private String placeId;
 	private String filename;
 	private String uuid;
 
@@ -25,12 +25,12 @@ public class ReviewImage implements UploadFile{
 		this.review = review;
 	}
 	
-	public String getPlaceName() {
-		return placeName;
+	public String getPlaceId() {
+		return placeId;
 	}
 
-	public void setPlaceName(String placeName) {
-		this.placeName = placeName;
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
 	}
 
 	public String getFilename() {

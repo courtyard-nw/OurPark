@@ -1,16 +1,16 @@
 package kr.ac.ourpark.model;
 
 public class Place {
-	private String placeName;
+	private String placeId;
 	private String placeAddr;
 	private String placeRoadAddr;
 
-	public String getPlaceName() {
-		return placeName;
+	public String getPlaceId() {
+		return placeId;
 	}
 
-	public void setPlaceName(String placeName) {
-		this.placeName = placeName;
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
 	}
 
 	public String getPlaceAddr() {
