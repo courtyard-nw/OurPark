@@ -2,6 +2,7 @@ package kr.ac.ourpark.model;
 
 public class Place {
 	private String placeId;
+	private String placeName;
 	private String placeAddr;
 	private String placeRoadAddr;
 
@@ -27,5 +28,13 @@ public class Place {
 
 	public void setPlaceRoadAddr(String placeRoadAddr) {
 		this.placeRoadAddr = placeRoadAddr;
+	}
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 }
