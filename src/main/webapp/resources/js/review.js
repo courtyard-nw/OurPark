@@ -1,5 +1,6 @@
 const state = {
 	placeName: $(".name").text(),
+	placeId: $(".name").attr("id"),
 	cmtPerClick: 0,
 	cmtNum: 0
 };
@@ -42,7 +43,7 @@ $(function () {
 
 function getCmt() {
 
-	$.ajax("getCmt?placeName=" + state.placeName, {
+	$.ajax("getCmt?placeId=" + state.placeId, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -121,7 +122,7 @@ function rating(c_rate, cmt, i) {
 
 function getImages() {
 
-	$.ajax("getImage?placeName=" + state.placeName, {
+	$.ajax("getImage?placeId=" + state.placeId, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -175,9 +176,9 @@ function showSwiper(images) {
 }
 
 function getReviewInfo() {
-	console.log("getReviewInfo: " + state.placeName);
+	console.log("getReviewInfo: " + state.placeId);
 
-	$.ajax("reviewInfo?placeName=" + state.placeName, {
+	$.ajax("reviewInfo?placeId=" + state.placeId, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
