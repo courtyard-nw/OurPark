@@ -1,5 +1,5 @@
 let item = {
-	placeName: "",
+	placeId: "",
 	placeAddr: "",
 	placeRoadAddr: ""
 }
@@ -29,7 +29,7 @@ $(function () {
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
-	$.ajax("../review/reviewInfo?placeName=" + item.placeName, {
+	$.ajax("../review/reviewInfo?placeId=" + item.placeId, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -54,7 +54,7 @@ function getReviewInfo(index) {
 function getImage(index) {
 	let img = `.img${index}`;
 
-	$.ajax("../review/getImage?placeName=" + item.placeName, {
+	$.ajax("../review/getImage?placeId=" + item.placeId, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
@@ -280,13 +280,13 @@ function getListItem(index, places) {
 	el.innerHTML = itemStr;
 	el.className = 'sec_group_info';
 
-	item.placeName = places.place_name;
+	item.placeId = places.id;
 	getReviewInfo(index); 
 	getImage(index);
 
 	//el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
 	$(el).click(() => {
-		item.placeName = places.place_name;
+		item.placeId = places.id;
 
 		if (places.road_address_name) {
 			item.placeRoadAddr = places.road_address_name;
