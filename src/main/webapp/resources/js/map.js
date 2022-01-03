@@ -1,5 +1,6 @@
 let item = {
 	placeId: "",
+	placeName: "",
 	placeAddr: "",
 	placeRoadAddr: ""
 }
@@ -281,6 +282,7 @@ function getListItem(index, places) {
 	el.className = 'sec_group_info';
 
 	item.placeId = places.id;
+	item.placeName = places.place_name;
 	getReviewInfo(index); 
 	getImage(index);
 
