@@ -8,13 +8,13 @@ public interface ReviewDao {
 
 	void add(Review item);
 
-	double average(String placeName);
+	double average(String placeId);
 
-	int countCmt(String placeName);
+	int countCmt(String placeId);
 
-	int findCode(String placeName);
+	int findCode(String placeId);
 
-	List<Review> getCmt(String placeName);
+	List<Review> getCmt(String placeId);
 
 	List<Review> list(String id);
 

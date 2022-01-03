@@ -19,13 +19,13 @@ public class ReviewImageDaoImpl implements ReviewImageDao {
 	}
 
 	@Override
-	public int countImg(String placeName) {
-		return sql.selectOne("review_image.count_img", placeName);
+	public int countImg(String placeId) {
+		return sql.selectOne("review_image.count_img", placeId);
 	}
 
 	@Override
-	public List<ReviewImage> getImage(String placeName) {
-		return sql.selectList("review_image.get_image", placeName);
+	public List<ReviewImage> getImage(String placeId) {
+		return sql.selectList("review_image.get_image", placeId);
 	}
 
 	@Override

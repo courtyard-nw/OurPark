@@ -12,15 +12,15 @@ public interface ReviewService {
 
 	void add(Review item);
 
-	double average(String placeName);
+	double average(String placeId);
 
-	int countCmt(String placeName);
+	int countCmt(String placeId);
 
-	int countImg(String placeName);
+	int countImg(String placeId);
 
-	List<ReviewImage> getImage(String placeName);
+	List<ReviewImage> getImage(String placeId);
 
-	List<Review> getCmt(String placeName);
+	List<Review> getCmt(String placeId);
 
 	List<Review> list(String id);
 

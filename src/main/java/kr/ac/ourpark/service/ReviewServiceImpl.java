@@ -27,7 +27,7 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.add(item);
 		
 		for(ReviewImage image : item.getImages()) {
-			image.setPlaceName(item.getPlaceName());
+			image.setPlaceId(item.getplaceId());
 			image.setReview(item.getCode());
 			
 			reviewImageDao.add(image);
@@ -35,28 +35,28 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public double average(String placeName) {
-		return reviewDao.average(placeName);
+	public double average(String placeId) {
+		return reviewDao.average(placeId);
 	}
 
 	@Override
-	public int countCmt(String placeName) {
-		return reviewDao.countCmt(placeName);
+	public int countCmt(String placeId) {
+		return reviewDao.countCmt(placeId);
 	}
 
 	@Override
-	public int countImg(String placeName) {
-		return reviewImageDao.countImg(placeName);
+	public int countImg(String placeId) {
+		return reviewImageDao.countImg(placeId);
 	}
 
 	@Override
-	public List<ReviewImage> getImage(String placeName) {
-		return reviewImageDao.getImage(placeName);
+	public List<ReviewImage> getImage(String placeId) {
+		return reviewImageDao.getImage(placeId);
 	}
 
 	@Override
-	public List<Review> getCmt(String placeName) {
-		return reviewDao.getCmt(placeName);
+	public List<Review> getCmt(String placeId) {
+		return reviewDao.getCmt(placeId);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		if(item.getImages() != null)
 			for(ReviewImage image : item.getImages()) {
-				image.setPlaceName(item.getPlaceName());
+				image.setPlaceId(item.getplaceId());
 				image.setReview(item.getCode());
 				
 				reviewImageDao.add(image);

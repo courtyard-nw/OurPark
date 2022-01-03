@@ -20,23 +20,23 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public double average(String placeName) {
-		return sql.selectOne("review.average", placeName);
+	public double average(String placeId) {
+		return sql.selectOne("review.average", placeId);
 	}
 
 	@Override
-	public int countCmt(String placeName) {
-		return sql.selectOne("review.count_cmt", placeName);
+	public int countCmt(String placeId) {
+		return sql.selectOne("review.count_cmt", placeId);
 	}
 	
 	@Override
-	public int findCode(String placeName) {
-		return sql.selectOne("review.find_code", placeName);
+	public int findCode(String placeId) {
+		return sql.selectOne("review.find_code", placeId);
 	}
 
 	@Override
-	public List<Review> getCmt(String placeName) {
-		return sql.selectList("review.get_cmt", placeName);
+	public List<Review> getCmt(String placeId) {
+		return sql.selectList("review.get_cmt", placeId);
 	}
 
 	@Override

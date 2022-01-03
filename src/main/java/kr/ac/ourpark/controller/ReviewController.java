@@ -130,30 +130,30 @@ public class ReviewController {
 
 	@GetMapping("/getCmt")
 	@ResponseBody
-	public List<Review> getCmt(String placeName) {
-		List<Review> list = service.getCmt(placeName);
+	public List<Review> getCmt(String placeId) {
+		List<Review> list = service.getCmt(placeId);
 
 		return list;
 	}
 
 	@GetMapping("/getImage")
 	@ResponseBody
-	public List<ReviewImage> getImage(String placeName) {
-		List<ReviewImage> image = service.getImage(placeName);
+	public List<ReviewImage> getImage(String placeId) {
+		List<ReviewImage> image = service.getImage(placeId);
 
 		return image;
 	}
 
 	@GetMapping("/reviewInfo")
 	@ResponseBody
-	public Map<String, Object> reviewInfo(String placeName) {
+	public Map<String, Object> reviewInfo(String placeId) {
 
-		System.out.println("server: " + placeName);
+		System.out.println("server: " + placeId);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
-		double average = service.average(placeName);
-		int countCmt = service.countCmt(placeName);
-		int countImg = service.countImg(placeName);
+		double average = service.average(placeId);
+		int countCmt = service.countCmt(placeId);
+		int countImg = service.countImg(placeId);
 
 		map.put("average", average);
 		map.put("countCmt", countCmt);

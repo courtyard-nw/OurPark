@@ -8,9 +8,9 @@ public interface ReviewImageDao {
 
 	void add(ReviewImage image);
 
-	int countImg(String placeName);
+	int countImg(String placeId);
 
-	List<ReviewImage> getImage(String placeName);
+	List<ReviewImage> getImage(String placeId);
 
 	void delete(int review);
 
