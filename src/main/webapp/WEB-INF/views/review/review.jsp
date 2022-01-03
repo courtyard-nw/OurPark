@@ -52,7 +52,7 @@
             </div>
             <div class="content">
                 <div class="c_header">
-                    <h3 class="name">${sessionScope.place.placeName}</h3>
+                    <h3 class="name" id="${sessionScope.place.placeId}">${sessionScope.place.placeName}</h3>
                     <h3 class="rate" id="average">${average}</h3>
                     <div class="write">
                     <c:if test="${sessionScope.member != null}">
