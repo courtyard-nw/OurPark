@@ -8,6 +8,7 @@ public class Review {
 	private String member;
 	private String placeAddr;
 	private String placeId;
+	private String placeName;
 	private int rating;
 	private String info;
 	private Date regDate;
@@ -45,6 +46,14 @@ public class Review {
 
 	public void setplaceId(String placeId) {
 		this.placeId = placeId;
+	}
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 
 	public int getRating() {
