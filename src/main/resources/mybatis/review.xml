@@ -6,7 +6,7 @@
 		
 	<insert id="add">
 		INSERT INTO review
-		VALUES (NULL, #{member}, #{placeAddr}, #{placeName}, CONVERT(#{rating}, SIGNED), #{info}, NOW())
+		VALUES (NULL, #{member}, #{placeAddr}, #{placeId}, #{placeName}, CONVERT(#{rating}, SIGNED), #{info}, NOW())
 		<selectKey keyProperty="code" resultType="Integer" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -14,19 +14,18 @@
 	
 	<select id="average" resultType="Double">
 		SELECT IFNULL(ROUND(AVG(rating), 1), '0') FROM review
-		WHERE place_name=#{placeName}
+		WHERE place_id=#{placeId}
 	</select>
 	
 	<select id="count_cmt" resultType="Integer">
 		SELECT IFNULL(COUNT(code), '0') FROM review
-		WHERE place_name=#{placeName}
+		WHERE place_id=#{placeId}
 	</select>
 	
 	<resultMap type="Review" id="ReviewMap">
 		<id column="code" property="code" />
 		<result column="r_member" property="member"/>
 		<result column="place_addr" property="placeAddr"/>
-		<result column="place_name" property="placeName"/>
 		<result column="rating" property="rating"/>
 		<result column="info" property="info"/>
 		<result column="r_reg_date" property="fmtDate"/>
@@ -34,19 +33,19 @@
 		<collection property="images" column="review" ofType="ReviewImage" javaType="ArrayList">
 			<id column="i_code" property="code"/>
 			<result column="review" property="review"/>
-			<result column="place_name" property="placeName"/>
+			<result column="place_id" property="placeId"/>
 			<result column="filename" property="filename"/>
 			<result column="uuid" property="uuid"/>
 		</collection>	
 	</resultMap>
 	
 	<select id="get_cmt" resultMap="ReviewMap">
-		SELECT r.code, IFNULL(m.nickname, '익명의 사용자') r_member, r.place_addr, r.place_name, r.rating, r.info, LEFT(CAST(r.reg_date AS CHAR), 10) r_reg_date,
-			i.code i_code, i.review, i.place_name,	i.filename,	i.uuid
+		SELECT r.code, IFNULL(m.nickname, '익명의 사용자') r_member, r.place_addr, r.rating, r.info, LEFT(CAST(r.reg_date AS CHAR), 10) r_reg_date,
+			i.code i_code, i.review, i.place_id,	i.filename,	i.uuid
 		FROM review r
 		LEFT OUTER JOIN review_image i ON r.code = i.review
 		LEFT OUTER JOIN member m ON r.member = m.id
-		WHERE i.place_name=#{placeName}
+		WHERE i.place_id=#{placeId}
 		ORDER BY r.reg_date DESC
 	</select>
 	
@@ -58,7 +57,7 @@
 	
 	<select id="item" resultMap="ReviewMap">
 		SELECT r.*,
-			i.code i_code, i.review, i.place_name,	i.filename,	i.uuid
+			i.code i_code, i.review, i.place_id, i.filename,	i.uuid
 		FROM review r
 		LEFT OUTER JOIN review_image i ON r.code=i.review
 		WHERE r.code=#{code}
