@@ -92,7 +92,10 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 function nameSearchCB(data, status) {
 	if (status === kakao.maps.services.Status.OK) {
 		var nameInput = document.getElementById("name");
+		var idInput = document.getElementById("placeId");
+
 		nameInput.value = data[0].place_name;
+		idInput.value = data[0].id;
 	}
 }
 
