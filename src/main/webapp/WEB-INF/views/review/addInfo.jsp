@@ -50,6 +50,7 @@
                 <div class="inp mt-5">
                     <label>이름</label>
                     <input type="text" class="form-control mt-2" id="placeName" name="placeName" value="${sessionScope.placeAddr.placeName}" readonly>
+					<input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" readonly >
                 </div>
                       
                 <div class="inp mt-5">
