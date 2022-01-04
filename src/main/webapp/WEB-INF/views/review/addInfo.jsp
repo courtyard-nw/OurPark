@@ -50,7 +50,7 @@
                 <div class="inp mt-5">
                     <label>이름</label>
                     <input type="text" class="form-control mt-2" id="placeName" name="placeName" value="${sessionScope.placeAddr.placeName}" readonly>
-					<input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" readonly >
+                    <input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" value="${sessionScope.placeAddr.placeId}" readonly>
                 </div>
                       
                 <div class="inp mt-5">
@@ -86,7 +86,6 @@
                     <div class="btn btn-outline-secondary btn-lg cancel">이전</div>
                     <button class="btn btn-success btn-lg rounded-5 ">등록</button>
                 </div>
-                
             </form>
         </section>
         <div style="height: 200px;"></div>

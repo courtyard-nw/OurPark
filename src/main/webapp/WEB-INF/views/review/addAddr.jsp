@@ -37,7 +37,7 @@
                     <input type="text" id="name" class="form-control mt-2" name="placeName" placeholder="장소명이 자동으로 표시됩니다" readonly>
                     <input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" readonly>
                 </div>
-               	<div class="btn-group mx-0 mt-5">
+                <div class="btn-group mx-0 mt-5">
                     <button class="btn btn-outline-secondary btn-lg rounded-5 cancel" type="button">취소</button>
                     <button class="btn btn-success btn-lg rounded-5">다음</button>
                 </div>
