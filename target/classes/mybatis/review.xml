@@ -26,6 +26,8 @@
 		<id column="code" property="code" />
 		<result column="r_member" property="member"/>
 		<result column="place_addr" property="placeAddr"/>
+		<result column="place_id" property="placeId"/>
+		<result column="place_name" property="placeName"/>
 		<result column="rating" property="rating"/>
 		<result column="info" property="info"/>
 		<result column="r_reg_date" property="fmtDate"/>
