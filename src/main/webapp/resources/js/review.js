@@ -76,7 +76,12 @@ function appendCmt(cmt) {
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
 
 		let c_rate;
-		rating(c_rate, cmt, i);
+		//평점이 정수일 때 '.0' 추가
+		if (cmt[i].rating == Math.round(cmt[i].rating)) {
+			c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
+		} else {
+			c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
+		}
 
 		const c_text = $("<p>").text(cmt[i].info);
 
@@ -107,16 +112,6 @@ function images(a_img, cmt, i) {
 	for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
 		c_img = $("<img>").attr("src", `../upload/${cmt[i].images[n].uuid}_${cmt[i].images[n].filename}`);
 		a_img.append(c_img);
-	}
-}
-
-function rating(c_rate, cmt, i) {
-
-	//평점이 정수일 때 '.0' 추가
-	if (cmt[i].rating == Math.round(cmt[i].rating)) {
-		c_rate = $("<p>").addClass("c_rate").text(`${cmt[i].rating}.0`);
-	} else {
-		c_rate = $("<p>").addClass("c_rate").text(cmt[i].rating);
 	}
 }
 
