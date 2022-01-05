@@ -281,13 +281,15 @@ function getListItem(index, places) {
 	el.innerHTML = itemStr;
 	el.className = 'sec_group_info';
 
+	item.placeId = places.id;
+
 	getReviewInfo(index); 
 	getImage(index);
 
 	//el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
 	$(el).click(() => {
-		item.placeId = places.id;
 		item.placeName = places.place_name;
+		item.placeId = places.id;
 
 		if (places.road_address_name) {
 			item.placeRoadAddr = places.road_address_name;
