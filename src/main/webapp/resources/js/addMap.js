@@ -82,14 +82,14 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 
 			addrInput.value = result[0].address.address_name;
 
-			ps.keywordSearch(addrInput.value, nameSearchCB);
+			ps.keywordSearch(addrInput.value, setVal);
 
 		}
 	});
 	marker.setPosition(latlng);
 });
 
-function nameSearchCB(data, status) {
+function setVal(data, status) {
 	if (status === kakao.maps.services.Status.OK) {
 		var nameInput = document.getElementById("name");
 		var idInput = document.getElementById("placeId");
