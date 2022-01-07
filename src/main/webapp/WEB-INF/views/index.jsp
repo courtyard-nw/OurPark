@@ -164,7 +164,7 @@
 								<p class="fs-5 pt-2">이제 우리 주변의 공적 공간을 살펴보세요!</p>
 							</div>
 							<div class="modal-body p-5 pt-0 pb-3">
-								<button type="button" class="w-100 mb-2 btn btn-lg rounded-4 btn-success" id="hideBtn">확인</button>
+								<button type="button" class="w-100 mb-2 btn btn-lg rounded-4 btn-success" data-bs-dismiss="modal" id="hideBtn">확인</button>
 							</div>
 						</div>
 					</div>
