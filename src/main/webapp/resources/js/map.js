@@ -5,6 +5,8 @@ let item = {
 	placeRoadAddr: ""
 }
 
+var overlayPosition;
+
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -18,7 +20,7 @@ $(function () {
 		$(".map_user_menu").addClass("hidden");
 	})
 
-	$(".map_user_menu > a:nth-child(2)").click(() => 
+	$(".map_user_menu > a:nth-child(2)").click(() =>
 		$(".map_user_menu > a:nth-child(2)").attr("href", "../review/list")
 	);
 
@@ -101,35 +103,6 @@ function sendPlace() {
 		error: xhr => alert(`오류 발생: ${xhr.statusText}`)
 	});
 }
-
-//스와이퍼 dom을 생성하기 위해서 저장
-var content = '<div class="sw_wrap">' +
-	'    <div class="swiper-wrapper">' +
-	'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
-	'       <div class="swiper-slide"><img src="../resources/img/cnu.jpg"></div>' +
-	'       <div class="swiper-slide">Slide 3</div>' +
-	'       <div class="swiper-slide">Slide 4</div>' +
-	'       <div class="swiper-slide">Slide 5</div>' +
-	'       <div class="swiper-slide">Slide 6</div>' +
-	'       <div class="swiper-slide">Slide 7</div>' +
-	'       <div class="swiper-slide">Slide 8</div>' +
-	'       <div class="swiper-slide">Slide 9</div>' +
-	'    </div>' +
-	'    <div class="swiper-button-next"></div>' +
-	'    <div class="swiper-button-prev"></div>' +
-	'    <div class="swiper-pagination"></div>' +
-	'    <div id="txt_wrapper">' +
-	'       <p id="placeName">asddas</p>' +
-	'       <p id="addr">asdasdasd</p>' +
-	'       <div>' +
-	'           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
-	'           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
-	'           </div>' +
-	'           <div id="score">4.6</div>' +
-	'       </div>' +
-	'   </div>' +
-	'</div>';
-
 
 //카카오 지도 api
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 1. 객체 생성 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -227,12 +200,14 @@ function displayPlaces(places) {
 		// 마커를 생성하고 지도에 표시합니다
 		var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 			marker = addMarker(placePosition, i),
-			itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다		
+			itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
 		// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 		// LatLngBounds 객체에 좌표를 추가합니다
 		bounds.extend(placePosition);
 
+		overlayPosition = placePosition;
+		
 		// 마커와 검색결과 항목에 mouseover 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
@@ -240,20 +215,20 @@ function displayPlaces(places) {
 			kakao.maps.event.addListener(marker, 'mouseover', function () {
 				displayInfowindow(marker, title);
 			});
-
+			
 			kakao.maps.event.addListener(marker, 'mouseout', function () {
 				infowindow.close();
 			});
-
+			
 			itemEl.onmouseover = function () {
 				displayInfowindow(marker, title);
 			};
-
+			
 			itemEl.onmouseout = function () {
 				infowindow.close();
 			};
 		})(marker, places[i].place_name);
-
+		
 		fragment.appendChild(itemEl);
 	}
 
@@ -296,15 +271,15 @@ function getListItem(index, places) {
 		'</div>';
 
 	el.innerHTML = itemStr;
-	el.className = 'sec_group_info';
+	el.className = 'sec_group_info'
 
 	item.placeId = places.id;
 
-	getReviewInfo(index); 
+	getReviewInfo(index);
 	getImage(index);
 
 	saveInfo(el, places);
-	
+
 	return el;
 }
 
@@ -376,7 +351,6 @@ function displayInfowindow(marker, title) {
 
 	infowindow.setContent(content);
 	infowindow.open(map, marker);
-	//makeOverlay(marker);
 
 }
 
@@ -385,4 +359,37 @@ function removeAllChildNods(el) {
 	while (el.hasChildNodes()) {
 		el.removeChild(el.lastChild);
 	}
+}
+
+// 마커 위에 커스텀오버레이를 표시합니다
+var overlay = new kakao.maps.CustomOverlay({
+	content: content,
+	clickable: true,
+	position: overlayPosition
+});
+
+//스와이퍼 dom을 생성하기 위해서 저장
+var content = 
+	'<div class="sw_wrap">' +
+	'    <div class="swiper-wrapper">' +
+	'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
+	'    </div>' +
+	'    <div class="swiper-button-next"></div>' +
+	'    <div class="swiper-button-prev"></div>' +
+	'    <div class="swiper-pagination"></div>' +
+	'    <div id="txt_wrapper">' +
+	'       <p id="placeName">asddas</p>' +
+	'       <p id="addr">asdasdasd</p>' +
+	'       <div>' +
+	'           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
+	'           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
+	'           </div>' +
+	'           <div id="score">4.6</div>' +
+	'       </div>' +
+	'   </div>' +
+	'</div>';
+
+// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+function closeOverlay() {
+	overlay.setMap(null);
 }
