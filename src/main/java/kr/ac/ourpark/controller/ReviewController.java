@@ -98,7 +98,7 @@ public class ReviewController {
 			e.printStackTrace();
 		}
 
-		return "redirect:../";
+		return "redirect:./list";
 	}
 
 	@PostMapping("/addInfo")
