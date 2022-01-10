@@ -5,7 +5,7 @@ let item = {
 	placeRoadAddr: ""
 }
 
-var overlayPosition;
+var overlayPosition = "";
 
 // 마커를 담을 배열입니다
 var markers = [];
@@ -207,7 +207,7 @@ function displayPlaces(places) {
 		bounds.extend(placePosition);
 
 		overlayPosition = placePosition;
-		
+
 		// 마커와 검색결과 항목에 mouseover 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
@@ -215,20 +215,20 @@ function displayPlaces(places) {
 			kakao.maps.event.addListener(marker, 'mouseover', function () {
 				displayInfowindow(marker, title);
 			});
-			
+
 			kakao.maps.event.addListener(marker, 'mouseout', function () {
 				infowindow.close();
 			});
-			
+
 			itemEl.onmouseover = function () {
 				displayInfowindow(marker, title);
 			};
-			
+
 			itemEl.onmouseout = function () {
 				infowindow.close();
 			};
 		})(marker, places[i].place_name);
-		
+
 		fragment.appendChild(itemEl);
 	}
 
@@ -299,6 +299,11 @@ function addMarker(position, idx, title) {
 			image: markerImage
 		});
 
+	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+	kakao.maps.event.addListener(marker, 'click', function () {
+		overlay.setMap(map);
+	});
+
 	marker.setMap(map); // 지도 위에 마커를 표출합니다
 	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 
@@ -347,9 +352,9 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
-	var content = '<h3 style="padding:5px;z-index:1;">' + title + '</h3>';
+	var placeTitle = '<h3 style="padding:5px;z-index:1;">' + title + '</h3>';
 
-	infowindow.setContent(content);
+	infowindow.setContent(placeTitle);
 	infowindow.open(map, marker);
 
 }
@@ -369,7 +374,7 @@ var overlay = new kakao.maps.CustomOverlay({
 });
 
 //스와이퍼 dom을 생성하기 위해서 저장
-var content = 
+var content =
 	'<div class="sw_wrap">' +
 	'    <div class="swiper-wrapper">' +
 	'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
@@ -383,13 +388,45 @@ var content =
 	'       <div>' +
 	'           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
 	'           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
-	'           </div>' +
-	'           <div id="score">4.6</div>' +
-	'       </div>' +
-	'   </div>' +
+	'      	</div>' +
+	'       <div id="score">4.6</div>' +
+	'    </div>' +
 	'</div>';
 
 // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
 function closeOverlay() {
 	overlay.setMap(null);
+}
+
+function makeSwipper() {
+	const wrapper = $("<div>").addClass("sw_wrap");
+	
+	const swiper_wrapper = $("<div>").addClass("swiper-wrapper");
+	const swiper_slide = $("<div>").addClass("swiper-slide");
+	const sw_img = $("<img>").attr("src", "../resources/img/park_sample.png").addClass("image");
+	swiper_slide.append(sw_img);
+	swiper_wrapper.append(swiper_slide);
+	
+	const next = $("<div>").addClass("swiper-button-next");
+	const prev = $("<div>").addClass("swiper-button-prev");
+	const pagination = $("<div>").addClass("swiper-pagination");
+	
+	const txt_wrapper = $("<div>").addClass("swiper-pagination");
+	const pName = $("<p>").attr("id", "placeName").text("장소 이름1");
+	const addr = $("<p>").attr("id", "addr").text("주소1");
+	const txt_div = $("<div>");
+	const img_revNum = $("<img>").attr("src", "../resources/img/Icon open-pencil.png");
+	const span_revNum = $("<span>").addClass("revNum").text("68");
+	img_revNum.append(span_revNum);
+	const img_photo = $("<img>").attr("src", "../resources/img/Icon material-photo-camera.png");
+	const span_photo = $("<span>").addClass("revNum").text("130");
+	img_photo.append(span_photo);
+	txt_div.append(img_revNum).append(img_photo);
+	const div_score = $("<div>").attr("id", "score").text("4.6");
+	
+	txt_wrapper.append(pName).append(addr).append(txt_div).append(div_score);
+	
+	wrapper.append(swiper_wrapper).append(next).append(prev).append(pagination).append(txt_wrapper);
+
+	return wrapper;
 }
