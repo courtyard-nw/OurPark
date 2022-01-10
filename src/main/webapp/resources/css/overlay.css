@@ -1,9 +1,3 @@
-html,
-      body {
-        position: relative;
-        height: 100%;
-      }
-
       body {
         font-family: 'Noto Sans KR', 'Malgun Gothic';
         font-size: 14px;
@@ -711,7 +705,6 @@ button.swiper-pagination-bullet {
           backface-visibility: hidden;
   overflow: hidden;
 }
-Build: a7ebffa
 
 
 
