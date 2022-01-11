@@ -195,6 +195,7 @@ function displayPlaces(places) {
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
 
+
 	for (var i = 0; i < places.length; i++) {
 
 		// 마커를 생성하고 지도에 표시합니다
@@ -299,6 +300,13 @@ function addMarker(position, idx, title) {
 			image: markerImage
 		});
 
+	// 마커 위에 커스텀오버레이를 표시합니다
+	var overlay = new kakao.maps.CustomOverlay({
+		content: content,
+		clickable: true,
+		position: marker.getPosition()
+	});
+
 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 	kakao.maps.event.addListener(marker, 'click', function () {
 		overlay.setMap(map);
@@ -366,13 +374,6 @@ function removeAllChildNods(el) {
 	}
 }
 
-// 마커 위에 커스텀오버레이를 표시합니다
-var overlay = new kakao.maps.CustomOverlay({
-	content: content,
-	clickable: true,
-	position: overlayPosition
-});
-
 //스와이퍼 dom을 생성하기 위해서 저장
 var content =
 	'<div class="sw_wrap">' +
@@ -400,17 +401,17 @@ function closeOverlay() {
 
 function makeSwipper() {
 	const wrapper = $("<div>").addClass("sw_wrap");
-	
+
 	const swiper_wrapper = $("<div>").addClass("swiper-wrapper");
 	const swiper_slide = $("<div>").addClass("swiper-slide");
 	const sw_img = $("<img>").attr("src", "../resources/img/park_sample.png").addClass("image");
 	swiper_slide.append(sw_img);
 	swiper_wrapper.append(swiper_slide);
-	
+
 	const next = $("<div>").addClass("swiper-button-next");
 	const prev = $("<div>").addClass("swiper-button-prev");
 	const pagination = $("<div>").addClass("swiper-pagination");
-	
+
 	const txt_wrapper = $("<div>").addClass("swiper-pagination");
 	const pName = $("<p>").attr("id", "placeName").text("장소 이름1");
 	const addr = $("<p>").attr("id", "addr").text("주소1");
@@ -423,9 +424,9 @@ function makeSwipper() {
 	img_photo.append(span_photo);
 	txt_div.append(img_revNum).append(img_photo);
 	const div_score = $("<div>").attr("id", "score").text("4.6");
-	
+
 	txt_wrapper.append(pName).append(addr).append(txt_div).append(div_score);
-	
+
 	wrapper.append(swiper_wrapper).append(next).append(prev).append(pagination).append(txt_wrapper);
 
 	return wrapper;
