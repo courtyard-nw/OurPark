@@ -10,6 +10,8 @@ var overlayPosition = "";
 // 마커를 담을 배열입니다
 var markers = [];
 
+var overlays = [];
+
 $(function () {
 
 	$("#user").click(() => {
@@ -194,7 +196,7 @@ function displayPlaces(places) {
 
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
-
+	
 
 	for (var i = 0; i < places.length; i++) {
 
@@ -315,6 +317,8 @@ function addMarker(position, idx, title) {
 	marker.setMap(map); // 지도 위에 마커를 표출합니다
 	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 
+	overlays.push(overlay);
+
 	return marker;
 }
 
@@ -324,6 +328,13 @@ function removeMarker() {
 		markers[i].setMap(null);
 	}
 	markers = [];
+}
+
+function removeOverlay() {
+	for (var i = 0; i < overlays.length; i++) {
+		overlays[i].setMap(null);
+	}
+	overlays = [];
 }
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
