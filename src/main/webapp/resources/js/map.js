@@ -10,8 +10,6 @@ var overlayPosition = "";
 // 마커를 담을 배열입니다
 var markers = [];
 
-var overlays = [];
-
 $(function () {
 
 	$("#user").click(() => {
@@ -302,10 +300,6 @@ function addMarker(position, idx, title) {
 			image: markerImage
 		});
 
-
-
-
-
 	// $("#map").click(() => closeOverlay());
 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 	kakao.maps.event.addListener(marker, 'click', function () {
@@ -342,13 +336,6 @@ function removeMarker() {
 		markers[i].setMap(null);
 	}
 	markers = [];
-}
-
-function removeOverlay() {
-	for (var i = 0; i < overlays.length; i++) {
-		overlays[i].setMap(null);
-	}
-	overlays = [];
 }
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
