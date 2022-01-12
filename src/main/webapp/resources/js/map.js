@@ -196,7 +196,7 @@ function displayPlaces(places) {
 
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
-	
+
 
 	for (var i = 0; i < places.length; i++) {
 
@@ -302,22 +302,36 @@ function addMarker(position, idx, title) {
 			image: markerImage
 		});
 
-	// 마커 위에 커스텀오버레이를 표시합니다
-	var overlay = new kakao.maps.CustomOverlay({
-		content: content,
-		clickable: true,
-		position: marker.getPosition()
-	});
 
+
+
+
+	// $("#map").click(() => closeOverlay());
 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 	kakao.maps.event.addListener(marker, 'click', function () {
-		overlay.setMap(map);
+		var overlay = new kakao.maps.CustomOverlay({
+			content: content,
+			clickable: true,
+			map: "",
+			position: marker.getPosition()
+		});
+
+		if (overlay != null) {
+			$(".sw_wrap").parent().remove();
+			// 마커 위에 커스텀오버레이를 표시합니다
+			overlay.setMap(map);
+		} else {
+			overlay.setMap(map);
+		}
+
+		// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+		function closeOverlay() {
+			overlay.setMap(null);
+		}
 	});
 
 	marker.setMap(map); // 지도 위에 마커를 표출합니다
 	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
-	overlays.push(overlay);
 
 	return marker;
 }
@@ -404,11 +418,6 @@ var content =
 	'       <div id="score">4.6</div>' +
 	'    </div>' +
 	'</div>';
-
-// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-function closeOverlay() {
-	overlay.setMap(null);
-}
 
 function makeSwipper() {
 	const wrapper = $("<div>").addClass("sw_wrap");
