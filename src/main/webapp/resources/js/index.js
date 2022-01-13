@@ -8,12 +8,7 @@ $(function() {
 	});
 
 	$("#searchBtn").click(() => {
-		if ($("input[name='keyword']").val() == '') {
-			$("#searchBtn").attr("type", "button");
-			alert("키워드를 입력해주세요!");
-		} else {
-			$("#searchBtn").attr("type", "submit");
-		}
+		search();
 	});
 	
 	showMsg();
@@ -22,6 +17,15 @@ $(function() {
 		hideMsg();
 	})
 })
+
+function search() {
+	if ($("input[name='keyword']").val() == '') {
+		$("#searchBtn").attr("type", "button");
+		alert("키워드를 입력해주세요!");
+	} else {
+		$("#searchBtn").attr("type", "submit");
+	}
+}
 
 function showMsg() {
 	if(sessionStorage.getItem("signup") != null) {
