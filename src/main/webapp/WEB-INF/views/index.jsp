@@ -54,7 +54,7 @@
 						<form action="map/map" method="get">
 							<div id="search-box" class="hvr-glow"></div>
 							<input type="text" placeholder="동네 이름, 궁금한 장소를 입력하세요" name="keyword">
-							<button id="searchBtn" type="button">
+							<button id="searchBtn" type="submit">
 								<img src="resources/img/search_button.png">
 							</button>
 						</form>
