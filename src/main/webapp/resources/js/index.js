@@ -7,13 +7,13 @@ $(function () {
 		$(".user_menu").addClass("hidden");
 	});
 
-	$("#searchBtn").click(() => {
-		search();
+	$("#searchBtn").click((event) => {
+		search(event);
 	});
 
 	$("input[name='keyword']").keypress((event) => {
 		if (event.keycode == 13 || event.which == 13) {
-			KeySearch(event);
+			search(event);
 		}
 	})
 	
@@ -24,22 +24,10 @@ $(function () {
 	})
 })
 
-function search() {
+function search(event) {
 	if ($("input[name='keyword']").val() == '') {
-		$("#searchBtn").attr("type", "button");
-		alert("키워드를 입력해주세요!");
-	} else {
-		$("#searchBtn").attr("type", "submit");
-	}
-}
-
-function KeySearch(event) {
-	if ($("input[name='keyword']").val() == '') {
-		
 		event.preventDefault();
 		alert("키워드를 입력해주세요!");
-		
-		return;
 	}
 }
 
