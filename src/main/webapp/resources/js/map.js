@@ -307,7 +307,7 @@ function addMarker(position, idx, title) {
 			content: content,
 			clickable: true,
 			map: "",
-			position: marker.getPosition()
+			position: position
 		});
 
 		if (overlay != null) {
