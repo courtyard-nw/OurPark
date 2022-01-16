@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../resources/css/overlay.css">
     
     <link rel="stylesheet" href="../resources/css/map.css" media="all">
-
+    
     <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -162,6 +162,28 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cd88e6e8c0c6c87da053fc7af08c2a8&libraries=services,clusterer,drawing"></script>
 
 <script src="../resources/js/map.js"></script>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+	var swiper = new Swiper(".mySwiper", {
+	    slidesPerView: 1,
+	    spaceBetween: 30,
+	    keyboard: {
+	        enabled: true,
+	    },
+	    pagination: {
+	        el: ".swiper-pagination",
+	        clickable: true,
+	        dynamicBullets: true
+	    },
+	    navigation: {
+	        nextEl: ".swiper-button-next",
+	        prevEl: ".swiper-button-prev",
+	    },
+	});
+</script>
 
 <jsp:include page="../include/body.jsp"></jsp:include>
 
