@@ -389,21 +389,26 @@ function removeAllChildNods(el) {
 //스와이퍼 dom을 생성하기 위해서 저장
 var content =
 	'<div class="sw_wrap">' +
-	'    <div class="swiper-wrapper">' +
-	'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
-	'    </div>' +
-	'    <div class="swiper-button-next"></div>' +
-	'    <div class="swiper-button-prev"></div>' +
-	'    <div class="swiper-pagination"></div>' +
-	'    <div id="txt_wrapper">' +
-	'       <p id="placeName">asddas</p>' +
-	'       <p id="addr">asdasdasd</p>' +
-	'       <div>' +
-	'           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
-	'           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
-	'      	</div>' +
-	'       <div id="score">4.6</div>' +
-	'    </div>' +
+	// Swiper
+		'<div class="swiper mySwiper"">' +
+		'    <div class="swiper-wrapper">' +
+		'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
+		'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
+		'       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
+		'    </div>' +
+		'    <div class="swiper-button-next"></div>' +
+		'    <div class="swiper-button-prev"></div>' +
+		'    <div class="swiper-pagination"></div>' +
+		'    <div id="txt_wrapper">' +
+		'       <p id="placeName">은구비 공원</p>' +
+		'       <p id="addr">대전광역시 유성구 노은서로 2번길 2</p>' +
+		'       <div>' +
+		'           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
+		'           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
+		'      	</div>' +
+		'       <div id="score">4.6</div>' +
+		'    </div>' +
+		'</div>' +
 	'</div>';
 
 function makeSwipper() {
