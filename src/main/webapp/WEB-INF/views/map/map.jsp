@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="../resources/css/overlay.css">
     
     <link rel="stylesheet" href="../resources/css/map.css" media="all">
-    
-    <style>
+
+    <!-- <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -27,7 +27,7 @@
         font-size: 3.5rem;
       }
     }
-	</style>
+	</style> -->
 	
 </head>
 <body>
