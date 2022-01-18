@@ -390,7 +390,7 @@ function removeAllChildNods(el) {
 var content =
     '<div class="sw_wrap">' +
     // Swiper
-    '<div class="swiper mySwiper"">' +
+    '<div class="swiper"">' +
     '    <div class="swiper-wrapper">' +
     '       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
     '       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
@@ -399,6 +399,8 @@ var content =
     '    <div class="swiper-button-next"></div>' +
     '    <div class="swiper-button-prev"></div>' +
     '    <div class="swiper-pagination"></div>' +
+    '</div>' +
+
     '    <div id="txt_wrapper">' +
     '       <p id="placeName">은구비 공원</p>' +
     '       <p id="addr">대전광역시 유성구 노은서로 2번길 2</p>' +
@@ -408,38 +410,5 @@ var content =
     '      	</div>' +
     '       <div id="score">4.6</div>' +
     '    </div>' +
-    '</div>' +
+
     '</div>';
-
-function makeSwipper() {
-    const wrapper = $("<div>").addClass("sw_wrap");
-
-    const swiper_wrapper = $("<div>").addClass("swiper-wrapper");
-    const swiper_slide = $("<div>").addClass("swiper-slide");
-    const sw_img = $("<img>").attr("src", "../resources/img/park_sample.png").addClass("image");
-    swiper_slide.append(sw_img);
-    swiper_wrapper.append(swiper_slide);
-
-    const next = $("<div>").addClass("swiper-button-next");
-    const prev = $("<div>").addClass("swiper-button-prev");
-    const pagination = $("<div>").addClass("swiper-pagination");
-
-    const txt_wrapper = $("<div>").addClass("swiper-pagination");
-    const pName = $("<p>").attr("id", "placeName").text("장소 이름1");
-    const addr = $("<p>").attr("id", "addr").text("주소1");
-    const txt_div = $("<div>");
-    const img_revNum = $("<img>").attr("src", "../resources/img/Icon open-pencil.png");
-    const span_revNum = $("<span>").addClass("revNum").text("68");
-    img_revNum.append(span_revNum);
-    const img_photo = $("<img>").attr("src", "../resources/img/Icon material-photo-camera.png");
-    const span_photo = $("<span>").addClass("revNum").text("130");
-    img_photo.append(span_photo);
-    txt_div.append(img_revNum).append(img_photo);
-    const div_score = $("<div>").attr("id", "score").text("4.6");
-
-    txt_wrapper.append(pName).append(addr).append(txt_div).append(div_score);
-
-    wrapper.append(swiper_wrapper).append(next).append(prev).append(pagination).append(txt_wrapper);
-
-    return wrapper;
-}
