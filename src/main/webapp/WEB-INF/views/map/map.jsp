@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../resources/css/overlay.css">
     
     <link rel="stylesheet" href="../resources/css/map.css" media="all">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- <style>
     .bd-placeholder-img {
@@ -106,57 +108,13 @@
             
         </div>
     </section>
+    
     <div style="width:200px; height: 1380px;" id="sec_scroll"></div>
     
     <jsp:include page="../include/footer.jsp"></jsp:include> 
   
 	<jsp:include page="../include/login.jsp"></jsp:include>
 	
-	 <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <form class="modal-dialog modal-dialog-centered" style="width: 350px; border-radius: 15px;">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold fs-4" id="exampleModalToggleLabel">유형</h5>
-            </div>
-            <div class="modal-body mx-auto">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio1">공원</label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2">놀이터</label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio3">광장</label>
-            </div>
-            <div class="modal-header mt-2">
-              <h5 class="modal-title fw-bold fs-4" id="exampleModalToggleLabel">위치</h5>
-            </div>
-            <div class="modal-body mx-auto">
-                <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_1" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2_1">대전 대덕구</label>
-
-                <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_2" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2_2">대전 동구</label>
-
-                <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_3" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2_3">대전 서구</label>
-                
-              <div class="mt-2 mx-auto">
-                <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_4" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2_4">대전 유성구</label>
-                
-                <input type="radio" class="btn-check" name="btnradio2" id="btnradio2_5" autocomplete="off">
-                <label class="btn btn-outline-success btn rounded-pill" for="btnradio2_5">대전 중구</label>
-              </div>
-                
-            </div>
-            <div class="btn-group mx-0 mt-3">
-              <button class="btn btn-outline-secondary btn-lg rounded-0 border-start-0 cancel" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">취소</button>
-              <button id="filterBtn" class="btn btn-success btn-lg rounded-0 border-end-0" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">적용</button>
-            </div>
-          </div>
-        </form>
-      </div> -->
 </body>
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cd88e6e8c0c6c87da053fc7af08c2a8&libraries=services,clusterer,drawing"></script>
@@ -167,9 +125,9 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
-	var swiper = new Swiper(".mySwiper", {
+	var swiper = new Swiper(".swiper", {
 	    slidesPerView: 1,
-	    spaceBetween: 30,
+	    spaceBetween: 0.3,
 	    keyboard: {
 	        enabled: true,
 	    },
