@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../resources/css/overlay.css">
     
     <link rel="stylesheet" href="../resources/css/map.css" media="all">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- <style>
     .bd-placeholder-img {
@@ -105,12 +107,12 @@
 			</div>
         </div>
     </section>
+    
     <div style="width:200px; height: 1380px;" id="sec_scroll"></div>
     
     <jsp:include page="../include/footer.jsp"></jsp:include> 
   
 	<jsp:include page="../include/login.jsp"></jsp:include>
-	
 
 </body>
 
@@ -137,6 +139,8 @@
 	        nextEl: ".swiper-button-next",
 	        prevEl: ".swiper-button-prev",
 	    },
+	    observer: true,
+	    observeParents: true,
 	});
 </script>
 
