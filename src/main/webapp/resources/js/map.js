@@ -5,12 +5,10 @@ let item = {
     placeRoadAddr: ""
 }
 
-var overlayPosition = "";
-
 // 마커를 담을 배열입니다
 var markers = [];
 
-$(function() {
+$(function () {
 
     $("#user").click(() => {
         $(".map_user_menu").removeClass("hidden");
@@ -27,6 +25,11 @@ $(function() {
     $(".cancel").click(() => {
         history.back();
     });
+
+    $("img[draggable='false']").click(() => {
+        $("#overlay").css("display", "block");
+    })
+
 })
 
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
@@ -97,7 +100,7 @@ function sendPlace() {
         url: "sendPlace",
         contentType: "application/json",
         data: JSON.stringify(item),
-        success: function(result) {
+        success: function (result) {
             return;
         },
         error: xhr => alert(`오류 발생: ${xhr.statusText}`)
@@ -178,7 +181,6 @@ function placesSearchCB(data, status, pagination) {
     }
 }
 
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 3. 검색 후 동작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
@@ -195,7 +197,6 @@ function displayPlaces(places) {
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
 
-
     for (var i = 0; i < places.length; i++) {
 
         // 마커를 생성하고 지도에 표시합니다
@@ -207,25 +208,23 @@ function displayPlaces(places) {
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
 
-        overlayPosition = placePosition;
-
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
+        (function (marker, title) {
+            kakao.maps.event.addListener(marker, 'mouseover', function () {
                 displayInfowindow(marker, title);
             });
 
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
+            kakao.maps.event.addListener(marker, 'mouseout', function () {
                 infowindow.close();
             });
 
-            itemEl.onmouseover = function() {
+            itemEl.onmouseover = function () {
                 displayInfowindow(marker, title);
             };
 
-            itemEl.onmouseout = function() {
+            itemEl.onmouseout = function () {
                 infowindow.close();
             };
         })(marker, places[i].place_name);
@@ -248,10 +247,10 @@ function getListItem(index, places) {
 
     var el = document.createElement('div'),
         itemStr = '<div class="content s-left" style="border-top: 1px solid #DBDBDB;">' +
-        '<a href="../review/review">' +
-        `<img class="c-img img${index}" src="#">` +
-        '<div class="txt">' +
-        `<p class="name">` + places.place_name + '</p>';
+            '<a href="../review/review">' +
+            `<img class="c-img img${index}" src="#">` +
+            '<div class="txt">' +
+            `<p class="name">` + places.place_name + '</p>';
 
 
     if (places.road_address_name) {
@@ -300,28 +299,13 @@ function addMarker(position, idx, title) {
             image: markerImage
         });
 
-    // $("#map").click(() => closeOverlay());
+
     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-    kakao.maps.event.addListener(marker, 'click', function() {
-        var overlay = new kakao.maps.CustomOverlay({
-            content: content,
-            clickable: true,
-            map: "",
-            position: position
-        });
+    kakao.maps.event.addListener(marker, 'click', function () {
+        overlay.setPosition(position);
 
-        if (overlay != null) {
-            $(".sw_wrap").parent().remove();
-            // 마커 위에 커스텀오버레이를 표시합니다
-            overlay.setMap(map);
-        } else {
-            overlay.setMap(map);
-        }
-
-        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-        function closeOverlay() {
-            overlay.setMap(null);
-        }
+        $("#overlay").css("display", "block");
+        overlay.setMap(map);
     });
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
@@ -357,8 +341,8 @@ function displayPagination(pagination) {
         if (i === pagination.current) {
             el.className = 'on';
         } else {
-            el.onclick = (function(i) {
-                return function() {
+            el.onclick = (function (i) {
+                return function () {
                     pagination.gotoPage(i);
                 }
             })(i);
@@ -386,29 +370,13 @@ function removeAllChildNods(el) {
     }
 }
 
-//스와이퍼 dom을 생성하기 위해서 저장
-var content =
-    '<div class="sw_wrap">' +
-    // Swiper
-    '<div class="swiper"">' +
-    '    <div class="swiper-wrapper">' +
-    '       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
-    '       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
-    '       <div class="swiper-slide"><img src="../resources/img/park_sample.png" class="image"></div>' +
-    '    </div>' +
-    '    <div class="swiper-button-next"></div>' +
-    '    <div class="swiper-button-prev"></div>' +
-    '    <div class="swiper-pagination"></div>' +
-    '</div>' +
+var overlay = new kakao.maps.CustomOverlay({
+    content: document.getElementById("overlay"),
+    clickable: true,
+    map: "",
+    position: ""
+});
 
-    '    <div id="txt_wrapper">' +
-    '       <p id="placeName">은구비 공원</p>' +
-    '       <p id="addr">대전광역시 유성구 노은서로 2번길 2</p>' +
-    '       <div id="numbers">' +
-    '           <img src="../resources/img/Icon open-pencil.png"><span class="revNum">68</span>' +
-    '           <img src="../resources/img/Icon material-photo-camera.png" id="camera"><span class="revNum">130</span>' +
-    '      	</div>' +
-    '       <div id="score">4.6</div>' +
-    '    </div>' +
-
-    '</div>';
+function closeOverlay() {
+    overlay.setMap(null);
+}
