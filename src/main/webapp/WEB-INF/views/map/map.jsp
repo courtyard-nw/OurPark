@@ -12,24 +12,6 @@
     <link rel="stylesheet" href="../resources/css/overlay.css">
     
     <link rel="stylesheet" href="../resources/css/map.css" media="all">
-    
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
-    <!-- <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-	</style> -->
 	
 </head>
 <body>
