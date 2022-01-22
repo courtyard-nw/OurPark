@@ -78,12 +78,6 @@
 				<div id="txt_wrapper">
 					<p id="placeName"></p>
 					<p id="addr"></p>
-					<div id="numbers">
-						<img src="../resources/img/Icon open-pencil.png"><span
-							class="revNum">0</span> <img
-							src="../resources/img/Icon material-photo-camera.png" id="camera"><span
-							class="revNum">0</span>
-					</div>
 					<div id="score">0</div>
 				</div>
 			</div>
