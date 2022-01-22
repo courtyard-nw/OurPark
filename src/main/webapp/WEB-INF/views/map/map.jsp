@@ -76,15 +76,15 @@
 					<div class="swiper-pagination"></div>
 				</div>
 				<div id="txt_wrapper">
-					<p id="placeName">은구비 공원</p>
-					<p id="addr">대전광역시 유성구 노은서로 2번길 2</p>
+					<p id="placeName"></p>
+					<p id="addr"></p>
 					<div id="numbers">
 						<img src="../resources/img/Icon open-pencil.png"><span
-							class="revNum">68</span> <img
+							class="revNum">0</span> <img
 							src="../resources/img/Icon material-photo-camera.png" id="camera"><span
-							class="revNum">130</span>
+							class="revNum">0</span>
 					</div>
-					<div id="score">4.6</div>
+					<div id="score">0</div>
 				</div>
 			</div>
         </div>
@@ -121,8 +121,7 @@
 	        nextEl: ".swiper-button-next",
 	        prevEl: ".swiper-button-prev",
 	    },
-	    observer: true,
-	    observeParents: true,
+	    observer: true,		
 	});
 </script>
 
