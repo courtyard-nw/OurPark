@@ -303,6 +303,11 @@ function addMarker(position, idx, place) {
     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
     kakao.maps.event.addListener(marker, 'click', function () {
         $("#placeName").text(place.place_name);
+        if (place.road_address_name) {
+            $("#addr").text(place.road_address_name);
+        } else {
+            $("#addr").text(place.address_name);
+        }
 
         overlay.setPosition(position);
 
