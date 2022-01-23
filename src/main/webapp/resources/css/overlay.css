@@ -70,6 +70,10 @@
           margin-left: 10px;
       }
       
+      #placeName {
+      	width: 190px;
+      }
+      
       #addr,
       #addr2,
       .revNum {
