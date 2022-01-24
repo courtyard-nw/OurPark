@@ -49,6 +49,11 @@ function saveInfo(el, places) {
     });
 }
 
+function setScore(idx) {
+    const score = $(`.average${idx}`).text();
+    $("#score").text(score);
+}
+
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
@@ -303,11 +308,14 @@ function addMarker(position, idx, place) {
     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
     kakao.maps.event.addListener(marker, 'click', function () {
         $("#placeName").text(place.place_name);
+        
         if (place.road_address_name) {
             $("#addr").text(place.road_address_name);
         } else {
             $("#addr").text(place.address_name);
         }
+
+        setScore(idx);
 
         overlay.setPosition(position);
 
