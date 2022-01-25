@@ -64,12 +64,6 @@
 						<div class="swiper-slide">
 							<img src="../resources/img/no_review.png" class="image">
 						</div>
-						<div class="swiper-slide">
-							<img src="../resources/img/no_review.png" class="image">
-						</div>
-						<div class="swiper-slide">
-							<img src="../resources/img/no_review.png" class="image">
-						</div>
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
