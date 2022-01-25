@@ -79,6 +79,38 @@ function getReviewInfo(index) {
 }
 
 //장소 대표 이미지를 검색
+function getImages(place) {
+
+    $.ajax("../review/getImage?placeId=" + place.id, {
+        method: "GET",
+        dataType: "json",
+        success: result => {
+            const image = result;
+
+            if (image != '') {
+                $(".swiper-slide").remove();
+
+                for(let i=0; i<=image.length; i++) {
+                    let slide = $("<div>").addClass("swiper-slide");
+                    let img = $("<img>").attr("src", `../upload/${image[i].uuid}_${image[i].filename}`).addClass("image");
+
+                    slide.append(img);
+                    $(".swiper-wrapper").append(slide);
+                } 
+            } else {
+                $(".swiper-slide").remove();
+                let slide = $("<div>").addClass("swiper-slide");
+                let img = $("<img>").attr("src", "../resources/img/no_review.png").addClass("image");
+
+                slide.append(img);
+                $(".swiper-wrapper").append(slide);
+                return;
+            }
+        },
+        error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
+    });
+}
+//장소 대표 이미지를 검색
 function getImage(index) {
     let img = `.img${index}`;
 
@@ -307,6 +339,7 @@ function addMarker(position, idx, place) {
 
     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
     kakao.maps.event.addListener(marker, 'click', function () {
+        getImages(place);
         $("#placeName").text(place.place_name);
         
         if (place.road_address_name) {
