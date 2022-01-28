@@ -37,6 +37,14 @@ $(function () {
             $(this).attr("id", "bounce");
         },
 
+        "click": function () {
+            const defaultMarker = "../resources/img/marker.png";
+            const clickedMarker = "../resources/img/marker2.png";
+
+            $(`img[src='${clickedMarker}']`).attr("src", defaultMarker);
+            $(this).attr("src", clickedMarker);
+        },
+
         "mouseout focusout": function () {
             $(this).removeAttr("id");
         }
