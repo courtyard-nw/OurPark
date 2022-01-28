@@ -31,7 +31,7 @@ $(function () {
     })
 
     $("img[src='../resources/img/marker.png']").on({
-        "mouseover click" : function() {
+        "mouseover focusin click" : function() {
             $(this).attr("id", "bounce");
             $(this).attr("src", "../resources/img/marker2.png");
         },
