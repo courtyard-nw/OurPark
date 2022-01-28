@@ -264,7 +264,7 @@
 }
 
 #bounce {
-    animation: bounce 1s linear 3;
+    animation: bounce 0.65s linear 3;
 }
 
 @keyframes bounce {
