@@ -30,15 +30,15 @@ $(function () {
         $("#overlay").css("display", "block");
     })
 
+    let state = 0;
+
     $("img[src='../resources/img/marker.png']").on({
-        "mouseover focusin click" : function() {
+        "mouseover focusin": function () {
             $(this).attr("id", "bounce");
-            $(this).attr("src", "../resources/img/marker2.png");
         },
 
-        "mouseout focusout" : function() {
+        "mouseout focusout": function () {
             $(this).removeAttr("id");
-            $(this).attr("src", "../resources/img/marker.png");
         }
     });
 
@@ -102,13 +102,13 @@ function getImages(place) {
             if (image != '') {
                 $(".swiper-slide").remove();
 
-                for(let i=0; i<=image.length; i++) {
+                for (let i = 0; i <= image.length; i++) {
                     let slide = $("<div>").addClass("swiper-slide");
                     let img = $("<img>").attr("src", `../upload/${image[i].uuid}_${image[i].filename}`).addClass("image");
 
                     slide.append(img);
                     $(".swiper-wrapper").append(slide);
-                } 
+                }
             } else {
                 $(".swiper-slide").remove();
                 let slide = $("<div>").addClass("swiper-slide");
@@ -256,7 +256,7 @@ function displayPlaces(places) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
-       
+
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
@@ -353,7 +353,7 @@ function addMarker(position, idx, place) {
     kakao.maps.event.addListener(marker, 'click', function () {
         getImages(place);
         $("#placeName").text(place.place_name);
-        
+
         if (place.road_address_name) {
             $("#addr").text(place.road_address_name);
         } else {
