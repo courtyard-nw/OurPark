@@ -53,11 +53,11 @@ $(function () {
     $(".sec_group_info").on({
         "mouseover focusin" : function() {
             let number = $(this).attr("class").substr(15, 1);
-            $(`img[src='../resources/img/marker.png']`).eq(number).attr("src", "../resources/img/marker2.png");
+            $(`img[src='../resources/img/marker.png']`).eq(number).attr("src", "../resources/img/marker2.png").attr("id", "bounce");
         },
 
         "mouseout focusout" : function() {
-            $(`img[src='../resources/img/marker2.png']`).attr("src", "../resources/img/marker.png");
+            $(`img[src='../resources/img/marker2.png']`).attr("src", "../resources/img/marker.png").removeAttr("id");
         }
     })
 
