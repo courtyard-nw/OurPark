@@ -54,6 +54,10 @@ $(function () {
         "mouseover focusin" : function() {
             let number = $(this).attr("class").substr(15, 1);
             $(`img[src='../resources/img/marker.png']`).eq(number).attr("src", "../resources/img/marker2.png");
+        },
+
+        "mouseout focusout" : function() {
+            $(`img[src='../resources/img/marker2.png']`).attr("src", "../resources/img/marker.png");
         }
     })
 
