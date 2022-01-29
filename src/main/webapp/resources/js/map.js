@@ -50,6 +50,13 @@ $(function () {
         }
     });
 
+    $(".sec_group_info").on({
+        "mouseover focusin" : function() {
+            let number = $(this).attr("class").substr(15, 1);
+            $(`img[src='../resources/img/marker.png']`).eq(number).attr("src", "../resources/img/marker2.png");
+        }
+    })
+
 })
 
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
@@ -320,7 +327,7 @@ function getListItem(index, places) {
         '</div>';
 
     el.innerHTML = itemStr;
-    el.className = 'sec_group_info'
+    el.className = `sec_group_info ${index}`
 
     item.placeId = places.id;
 
