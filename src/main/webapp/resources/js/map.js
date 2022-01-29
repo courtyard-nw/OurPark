@@ -269,14 +269,6 @@ function displayPlaces(places) {
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function (marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function () {
-                displayInfowindow(marker, title);
-            });
-
-            kakao.maps.event.addListener(marker, 'mouseout', function () {
-                infowindow.close();
-            });
-
             itemEl.onmouseover = function () {
                 displayInfowindow(marker, title);
             };
