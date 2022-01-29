@@ -31,6 +31,8 @@ $(function () {
     })
 
     let state = 0;
+    const defaultMarker = "../resources/img/marker.png";
+    const clickedMarker = "../resources/img/marker2.png";
 
     $("img[src='../resources/img/marker.png']").on({
         "mouseover focusin": function () {
@@ -38,9 +40,6 @@ $(function () {
         },
 
         "click": function () {
-            const defaultMarker = "../resources/img/marker.png";
-            const clickedMarker = "../resources/img/marker2.png";
-
             $(`img[src='${clickedMarker}']`).attr("src", defaultMarker);
             $(this).attr("src", clickedMarker);
         },
@@ -53,11 +52,11 @@ $(function () {
     $(".sec_group_info").on({
         "mouseover focusin" : function() {
             let number = $(this).attr("class").substr(15, 1);
-            $(`img[src='../resources/img/marker.png']`).eq(number).attr("src", "../resources/img/marker2.png").attr("id", "bounce");
+            $(`img[src='${defaultMarker}']`).eq(number).attr("src", clickedMarker).attr("id", "bounce");
         },
 
         "mouseout focusout" : function() {
-            $(`img[src='../resources/img/marker2.png']`).attr("src", "../resources/img/marker.png").removeAttr("id");
+            $(`img[src='${clickedMarker}']`).attr("src", defaultMarker).removeAttr("id");
         }
     })
 
