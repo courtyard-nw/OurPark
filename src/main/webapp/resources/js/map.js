@@ -30,7 +30,6 @@ $(function () {
         $("#overlay").css("display", "block");
     })
 
-    let state = 0;
     const defaultMarker = "../resources/img/marker.png";
     const clickedMarker = "../resources/img/marker2.png";
 
@@ -39,20 +38,21 @@ $(function () {
             $(this).attr("id", "bounce");
         },
 
+        
+        "mouseout focusout": function () {
+            $(this).removeAttr("id");
+        },
+
         "click": function () {
             $(`img[src='${clickedMarker}']`).attr("src", defaultMarker);
             $(this).attr("src", clickedMarker);
-        },
-
-        "mouseout focusout": function () {
-            $(this).removeAttr("id");
         }
     });
 
     $(".sec_group_info").on({
         "mouseover focusin" : function() {
-            let number = $(this).attr("class").substr(15, 1);
-            $(`img[src='${defaultMarker}']`).eq(number).attr("src", clickedMarker).attr("id", "bounce");
+            let i = $(this).attr("class").substr(15, 1);
+            $(`img[src='${defaultMarker}']`).eq(i).attr("src", clickedMarker).attr("id", "bounce");
         },
 
         "mouseout focusout" : function() {
