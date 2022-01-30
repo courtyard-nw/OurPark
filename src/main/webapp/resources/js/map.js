@@ -28,7 +28,7 @@ $(function () {
 
     $("img[draggable='false']").click(() => {
         $("#overlay").css("display", "block");
-    })
+    });
 
     const marker = "../resources/img/marker.png";
     const clickedMarker = "../resources/img/marker2.png";
@@ -58,8 +58,12 @@ $(function () {
         "mouseout focusout" : function() {
             $(`img[src='${clickedMarker}']`).attr("src", marker).removeAttr("id");
         }
-    })
+    });
 
+    $("#close").click(function() {
+        $("#overlay").css("display", "none");
+    });
+    
 })
 
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
