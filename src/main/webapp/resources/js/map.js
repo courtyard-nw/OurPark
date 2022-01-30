@@ -38,7 +38,7 @@ $(function () {
             $(this).attr("id", "bounce");
         },
 
-        
+
         "mouseout focusout": function () {
             $(this).removeAttr("id");
         },
@@ -50,20 +50,20 @@ $(function () {
     });
 
     $(".sec_group_info").on({
-        "mouseover focusin" : function() {
+        "mouseover focusin": function () {
             let i = $(this).attr("class").substr(15, 1);
             $(`img[src='${marker}']`).eq(i).attr("src", clickedMarker).attr("id", "bounce");
         },
 
-        "mouseout focusout" : function() {
+        "mouseout focusout": function () {
             $(`img[src='${clickedMarker}']`).attr("src", marker).removeAttr("id");
         }
     });
 
-    $("#close").click(function() {
+    $("#close").click(function () {
         $("#overlay").css("display", "none");
     });
-    
+
 })
 
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
