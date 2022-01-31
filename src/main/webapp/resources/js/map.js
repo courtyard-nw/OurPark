@@ -34,35 +34,35 @@ $(function () {
     const clickedMarker = "../resources/img/marker2.png";
 
     $("img[src='../resources/img/marker.png']").on({
-        "mouseover focusin": function () {
+        "mouseover focusin": function() {
             $(this).attr("id", "bounce");
         },
 
 
-        "mouseout focusout": function () {
+        "mouseout focusout": function() {
             $(this).removeAttr("id");
         },
 
-        "click": function () {
+        "click": function() {
             $(`img[src='${clickedMarker}']`).attr("src", marker);
             $(this).attr("src", clickedMarker);
         }
     });
 
     $(".sec_group_info").on({
-        "mouseover focusin": function () {
+        "mouseover focusin": function() {
             let i = $(this).attr("class").substr(15, 1);
             $(`img[src='${marker}']`).eq(i).attr("src", clickedMarker).attr("id", "bounce");
         },
 
-        "mouseout focusout": function () {
+        "mouseout focusout": function() {
             $(`img[src='${clickedMarker}']`).attr("src", marker).removeAttr("id");
         }
     });
 
-    $("#close").click(function () {
-        $("#overlay").css("display", "none");
-    });
+    // $("#close").click(function() {
+    //     closeOverlay();
+    // });
 
 })
 
@@ -438,6 +438,6 @@ var overlay = new kakao.maps.CustomOverlay({
     position: ""
 });
 
-function closeOverlay() {
-    overlay.setMap(null);
-}
+// function closeOverlay() {
+//     overlay.setMap(null);
+// }
