@@ -59,11 +59,6 @@ $(function () {
             $(`img[src='${clickedMarker}']`).attr("src", marker).removeAttr("id");
         }
     });
-
-    // $("#close").click(function() {
-    //     closeOverlay();
-    // });
-
 })
 
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
@@ -438,6 +433,6 @@ var overlay = new kakao.maps.CustomOverlay({
     position: ""
 });
 
-// function closeOverlay() {
-//     overlay.setMap(null);
-// }
+function closeOverlay() {
+    overlay.setMap(null);
+}
