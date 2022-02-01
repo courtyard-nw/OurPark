@@ -65,7 +65,7 @@
 							<img src="../resources/img/no_review.png" class="image">
 						</div>
 					</div>
-					<div id="close">x</div>
+					<div onclick="closeOverlay()"><button type="button" id="close">x</button></div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
 					<div class="swiper-pagination"></div>
