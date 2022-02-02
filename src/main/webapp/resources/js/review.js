@@ -71,7 +71,11 @@ function appendCmt(cmt) {
 		const div_user = $("<div>").addClass("c_user");
 		const user_img = $("<img>").attr("src", "../resources/img/Icon awesome-user-circle.png").addClass("user_img");
 
-		let user_name = $("<p>").addClass("user_name").text(cmt[i].member);
+		// if (cmt[i].member == null)
+			// let user_name = $("<p>").addClass("user_name").text("익명의 사용자");
+		// else
+			let user_name = $("<p>").addClass("user_name").text(cmt[i].member);
+
 		const div_date = $("<div>");
 		const c_date = $("<p>").addClass("c_date").text(cmt[i].fmtDate);
 
@@ -160,7 +164,7 @@ function showSwiper(images) {
 
 		//swiper 이미지 생성
 		const swiper_wrapper = $(".swiper-wrapper");
-		for (let i = 0; i <= images.length; i++) {
+		for (let i = 0; i <= (images.length - 1); i++) {
 			const slide = $("<div>").addClass("swiper-slide");
 			let img = $("<img>").attr("src", `../upload/${images[i].uuid}_${images[i].filename}`);
 
