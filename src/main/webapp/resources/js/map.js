@@ -119,7 +119,7 @@ function getImages(place) {
             if (image != '') {
                 $(".swiper-slide").remove();
 
-                for (let i = 0; i <= image.length; i++) {
+                for (let i = 0; i <= (image.length - 1); i++) {
                     let slide = $("<div>").addClass("swiper-slide");
                     let img = $("<img>").attr("src", `../upload/${image[i].uuid}_${image[i].filename}`).addClass("image");
 
