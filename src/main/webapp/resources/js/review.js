@@ -64,7 +64,7 @@ function getCmt() {
 }
 
 function appendCmt(cmt) {
-	for (let i = 0 + state.cmtPerClick; i <= 4 + state.cmtPerClick && i <= Object.keys(cmt).length; i++) {
+	for (let i = 0 + state.cmtPerClick; i <= 4 + state.cmtPerClick && i <= (Object.keys(cmt).length - 1); i++) {
 
 		const div_c = $("<div>").addClass("c").attr("data-num", i + 1);
 
