@@ -44,7 +44,7 @@ public class ApiController {
 	}
 
 	@GetMapping("/list/{code}")
-	public Review update(@PathVariable int code) {
+	public Review item(@PathVariable int code) {
 
 		return service.item(code);
 	}
