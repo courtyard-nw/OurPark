@@ -49,15 +49,15 @@ public class ApiController {
 		return service.item(code);
 	}
 
-	@GetMapping("/list/{placeId}/cmt")
-	public List<Review> cmt(@PathVariable String placeId) {
+	@GetMapping("/list/{placeId}/cmts")
+	public List<Review> cmts(@PathVariable String placeId) {
 		List<Review> list = service.getCmt(placeId);
 
 		return list;
 	}
 
-	@GetMapping("/list/{placeId}/image")
-	public List<ReviewImage> image(@PathVariable String placeId) {
+	@GetMapping("/list/{placeId}/images")
+	public List<ReviewImage> images(@PathVariable String placeId) {
 		List<ReviewImage> image = service.getImage(placeId);
 
 		return image;
