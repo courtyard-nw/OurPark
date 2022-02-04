@@ -49,22 +49,22 @@ public class ApiController {
 		return service.item(code);
 	}
 
-	@GetMapping("/list/cmt")
-	public List<Review> cmt(String placeId) {
+	@GetMapping("/list/{placeId}/cmt")
+	public List<Review> cmt(@PathVariable String placeId) {
 		List<Review> list = service.getCmt(placeId);
 
 		return list;
 	}
 
-	@GetMapping("/list/image")
-	public List<ReviewImage> image(String placeId) {
+	@GetMapping("/list/{placeId}/image")
+	public List<ReviewImage> image(@PathVariable String placeId) {
 		List<ReviewImage> image = service.getImage(placeId);
 
 		return image;
 	}
 
-	@GetMapping("/list/info")
-	public Map<String, Object> reviewInfo(String placeId) {
+	@GetMapping("/list/{placeId}/info")
+	public Map<String, Object> reviewInfo(@PathVariable String placeId) {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
