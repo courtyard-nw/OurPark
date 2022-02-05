@@ -19,7 +19,7 @@ $(function () {
     })
 
     $(".map_user_menu > a:nth-child(2)").click(() =>
-        $(".map_user_menu > a:nth-child(2)").attr("href", "../review/list")
+        $(".map_user_menu > a:nth-child(2)").attr("href", "../review/update")
     );
 
     $(".cancel").click(() => {

@@ -11,7 +11,7 @@
            </c:if>
 		<c:if test="${sessionScope.member != null}">
             <a href="../myPage">마이페이지</a>
-            <a href="review/list">리뷰 관리</a>
+            <a href="review/update">리뷰 관리</a>
             <a href="logout">로그아웃</a>
             <hr>
 		</c:if>
@@ -27,7 +27,7 @@
            </c:if>
 		<c:if test="${sessionScope.member != null}">
             <a href="../myPage">마이페이지</a>
-            <a href="list">리뷰 관리</a>
+            <a href="update">리뷰 관리</a>
             <hr>
             <a href="../logout">로그아웃</a>
 		</c:if>
