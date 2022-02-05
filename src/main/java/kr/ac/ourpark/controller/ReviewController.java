@@ -32,7 +32,7 @@ import kr.ac.ourpark.model.ReviewImage;
 import kr.ac.ourpark.service.ReviewService;
 import kr.ac.ourpark.util.Uploader;
 
-@RequestMapping("/review")
+@RequestMapping("/review_temp")
 @Controller
 public class ReviewController {
 	final String path = "review/";
