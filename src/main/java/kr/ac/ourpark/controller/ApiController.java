@@ -67,8 +67,10 @@ public class ApiController {
 	public Map<String, Object> reviewInfo(@PathVariable String placeId) {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
-
-		map.put("average", service.average(placeId));
+		
+		double average = service.average(placeId);
+		
+		map.put("average", average);
 		map.put("countCmt", service.countCmt(placeId));
 		map.put("countImg", service.countImg(placeId));
 
