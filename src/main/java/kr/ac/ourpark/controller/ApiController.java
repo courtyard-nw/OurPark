@@ -56,15 +56,15 @@ public class ApiController {
 		return list;
 	}
 
-	@GetMapping("/list/{placeId}/images")
-	public List<ReviewImage> images(@PathVariable String placeId) {
+	@GetMapping("/list/images")
+	public List<ReviewImage> images(String placeId) {
 		List<ReviewImage> image = service.getImage(placeId);
 
 		return image;
 	}
 
-	@GetMapping("/list/{placeId}/info")
-	public Map<String, Object> reviewInfo(@PathVariable String placeId) {
+	@GetMapping("/list/info")
+	public Map<String, Object> reviewInfo(String placeId) {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
