@@ -83,7 +83,7 @@ function saveInfo(el, places) {
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
 
-    $.ajax("../review/reviewInfo?placeId=" + item.placeId, {
+    $.ajax(`../rest/list/info?placeId=${item.placeId}`, {
         method: "GET",
         dataType: "json",
         success: result => {
@@ -136,11 +136,12 @@ function getImages(place) {
         error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
     });
 }
+
 //장소 대표 이미지를 검색
-function getImage(index) {
+function image(index) {
     let img = `.img${index}`;
 
-    $.ajax("../review/getImage?placeId=" + item.placeId, {
+    $.ajax(`../rest/list/images?placeId=${item.placeId}`, {
         method: "GET",
         dataType: "json",
         success: result => {
@@ -318,7 +319,7 @@ function getListItem(index, places) {
     item.placeId = places.id;
 
     getReviewInfo(index);
-    getImage(index);
+    image(index);
 
     saveInfo(el, places);
 
