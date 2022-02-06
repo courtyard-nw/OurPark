@@ -61,6 +61,7 @@ $(function () {
     });
 })
 
+
 //el 클릭 시 item 객체에 장소명, 주소, 도로명 주소를 저장
 function saveInfo(el, places) {
     $(el).click(() => {
@@ -78,10 +79,6 @@ function saveInfo(el, places) {
     });
 }
 
-function setScore(idx) {
-    const score = $(`.average${idx}`).text();
-    $("#score").text(score);
-}
 
 //장소별 평점, 댓글 수, 이미지 갯수를 검색
 function getReviewInfo(index) {
@@ -368,6 +365,11 @@ function addMarker(position, idx, place) {
     markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
     return marker;
+}
+
+function setScore(idx) {
+    const score = $(`.average${idx}`).text();
+    $("#score").text(score);
 }
 
 // 지도 위에 표시되고 있는 마커를 모두 제거합니다
