@@ -12,8 +12,6 @@
 
 <link rel="stylesheet" href="../resources/css/star.css">
 
-<script src="../resources/js/addInfo.js"></script>
-
 </head>
 
 <body>
@@ -76,7 +74,7 @@
                 
                 <div class="btn-group mx-0 mt-5">
                     <div class="btn btn-outline-secondary btn-lg cancel">이전</div>
-                    <button class="btn btn-success btn-lg rounded-5 ">등록</button>
+                    <button class="btn btn-success btn-lg rounded-5" type="button">등록</button>
                 </div>
             </form>
         </section>
@@ -102,6 +100,8 @@
 
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/396df7b21e.js" crossorigin="anonymous"></script>
+
+<script src="../resources/js/addInfo.js"></script>
 
 <jsp:include page="../include/body.jsp"></jsp:include>
 
