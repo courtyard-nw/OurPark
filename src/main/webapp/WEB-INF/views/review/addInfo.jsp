@@ -12,15 +12,7 @@
 
 <link rel="stylesheet" href="../resources/css/star.css">
 
-<script>
-	$(function() {
-		
-		$(".cancel").click(() => {
-			history.back();
-		});
-						
-	})
-</script>
+<script src="../resources/js/addInfo.js"></script>
 
 </head>
 
