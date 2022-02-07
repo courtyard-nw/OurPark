@@ -40,7 +40,7 @@
             <div id="modify">
                 <a href="#" class="cancel">수정</a>
             </div>
-            <form action="add" method="post" enctype="multipart/form-data">
+            <form action="../rest" method="post" enctype="multipart/form-data">
             
                 <div class="inp">
                     <label>위치</label>
