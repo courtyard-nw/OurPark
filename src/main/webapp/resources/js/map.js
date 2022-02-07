@@ -79,31 +79,6 @@ function saveInfo(el, places) {
     });
 }
 
-
-//장소별 평점, 댓글 수, 이미지 갯수를 검색
-function getReviewInfo(index) {
-
-    $.ajax(`../rest/list/info?placeId=${item.placeId}`, {
-        method: "GET",
-        dataType: "json",
-        success: result => {
-            const info = result;
-            const average = info.average;
-
-            if (average == Math.round(average)) {
-                $(`.average${index}`).text(`${average}.0`);
-            } else
-                $(`.average${index}`).text(average);
-
-            $(`.countCmt${index}`).text(info.countCmt);
-            $(`.countImg${index}`).text(info.countImg);
-
-            return;
-        },
-        error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
-    });
-}
-
 //오버레이용 이미지를 검색
 function getImages(place) {
 
@@ -141,7 +116,7 @@ function getImages(place) {
 function image(index) {
     let img = `.img${index}`;
 
-    $.ajax(`../rest/list/images?placeId=${item.placeId}`, {
+    $.ajax(`../rest/list/images/${item.placeId}`, {
         method: "GET",
         dataType: "json",
         success: result => {
@@ -152,6 +127,30 @@ function image(index) {
             } else {
                 $(img).attr("src", "../resources/img/noImg_map.png");
             }
+        },
+        error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
+    });
+}
+
+//장소별 평점, 댓글 수, 이미지 갯수를 검색
+function info(index) {
+
+    $.ajax(`../rest/list/info/${item.placeId}`, {
+        method: "GET",
+        dataType: "json",
+        success: result => {
+            const info = result;
+            const average = info.average;
+
+            if (average == Math.round(average)) {
+                $(`.average${index}`).text(`${average}.0`);
+            } else
+                $(`.average${index}`).text(average);
+
+            $(`.countCmt${index}`).text(info.countCmt);
+            $(`.countImg${index}`).text(info.countImg);
+
+            return;
         },
         error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
     });
@@ -318,7 +317,7 @@ function getListItem(index, places) {
 
     item.placeId = places.id;
 
-    getReviewInfo(index);
+    info(index);
     image(index);
 
     saveInfo(el, places);
