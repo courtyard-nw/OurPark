@@ -7,7 +7,7 @@ const state = {
 
 $(function () {
 
-	getImages();
+	images();
 
 	getReviewInfo();
 
@@ -119,9 +119,9 @@ function images(a_img, cmt, i) {
 	}
 }
 
-function getImages() {
+function images() {
 
-	$.ajax("getImage?placeId=" + state.placeId, {
+	$.ajax(`../rest/list/images/${state.placeId}`, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
