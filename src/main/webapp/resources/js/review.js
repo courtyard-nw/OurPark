@@ -9,7 +9,7 @@ $(function () {
 
 	images();
 
-	getReviewInfo();
+	reviewInfo();
 
 	cmts();
 
@@ -174,10 +174,8 @@ function showSwiper(images) {
 	})
 }
 
-function getReviewInfo() {
-	console.log("getReviewInfo: " + state.placeId);
-
-	$.ajax("reviewInfo?placeId=" + state.placeId, {
+function reviewInfo() {
+	$.ajax(`../rest/list/info/${state.placeId}`, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
