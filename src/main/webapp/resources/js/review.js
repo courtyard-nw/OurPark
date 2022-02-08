@@ -91,7 +91,7 @@ function appendCmts(cmt) {
 
 		const div_img = $("<div>").addClass("c_img");
 		const a_img = $("<a>").attr("href", "#");
-		images(a_img, cmt, i);
+		appendImgs(a_img, cmt, i);
 
 		//const div_delete = $("<div>");
 		//const a_update = $("<a>").attr("href", "#5").text("수정 |");
@@ -110,7 +110,7 @@ function appendCmts(cmt) {
 	}
 }
 
-function images(a_img, cmt, i) {
+function appendImgs(a_img, cmt, i) {
 	let c_img;
 
 	for (let n = 0; n < Object.keys(cmt[i].images).length; n++) {
