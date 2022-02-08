@@ -11,12 +11,12 @@ $(function () {
 
 	getReviewInfo();
 
-	getCmt();
+	cmts();
 
 	//더보기 버튼 클릭 시 댓글 표시
 	$(".btn").click(() => {
 		state.cmtPerClick += 5;
-		getCmt();
+		cmts();
 	});
 
 	//로고를 클릭하면 지도 페이지로 이동
@@ -41,9 +41,9 @@ $(function () {
 
 })
 
-function getCmt() {
+function cmts() {
 
-	$.ajax("getCmt?placeId=" + state.placeId, {
+	$.ajax(`../rest/list/cmts/${state.placeId}`, {
 		method: "GET",
 		dataType: "json",
 		success: result => {
