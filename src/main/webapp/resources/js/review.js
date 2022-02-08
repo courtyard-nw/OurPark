@@ -55,7 +55,7 @@ function cmts() {
 			//등록된 댓글이 존재하면 더보기 버튼 사라짐
 			hideBtn();
 
-			appendCmt(cmt);
+			appendCmts(cmt);
 
 			return;
 		},
@@ -63,7 +63,7 @@ function cmts() {
 	});
 }
 
-function appendCmt(cmt) {
+function appendCmts(cmt) {
 	for (let i = 0 + state.cmtPerClick; i <= 4 + state.cmtPerClick && i <= (Object.keys(cmt).length - 1); i++) {
 
 		const div_c = $("<div>").addClass("c").attr("data-num", i + 1);
