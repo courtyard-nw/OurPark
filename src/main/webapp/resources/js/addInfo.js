@@ -14,7 +14,7 @@ function add() {
 		contentType: false,
 		processData: false,
         success: result => {
-			location.href = "http://localhost:9090/ourpark/map/map?keyword=" + placeName;
+			location.href = `http://localhost:9090/ourpark/map/map?keyword=${placeName}`;
 			return;
         },
         error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
