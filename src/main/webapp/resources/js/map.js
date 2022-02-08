@@ -80,9 +80,9 @@ function saveInfo(el, places) {
 }
 
 //오버레이용 이미지를 검색
-function getImages(place) {
+function images(place) {
 
-    $.ajax("../review/getImage?placeId=" + place.id, {
+    $.ajax(`../rest/list/images/${item.placeId}`, {
         method: "GET",
         dataType: "json",
         success: result => {
@@ -344,7 +344,7 @@ function addMarker(position, idx, place) {
 
     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
     kakao.maps.event.addListener(marker, 'click', function () {
-        getImages(place);
+        images(place);
         $("#placeName").text(place.place_name);
 
         if (place.road_address_name) {
