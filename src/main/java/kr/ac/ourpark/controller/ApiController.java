@@ -49,7 +49,7 @@ public class ApiController {
 		return service.item(code);
 	}
 
-	@GetMapping("/list/{placeId}/cmts")
+	@GetMapping("/list/cmts/{placeId}")
 	public List<Review> cmts(@PathVariable String placeId) {
 		List<Review> list = service.getCmt(placeId);
 
