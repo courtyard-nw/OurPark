@@ -42,7 +42,6 @@ $(function () {
 })
 
 function cmts() {
-
 	$.ajax(`../rest/list/cmts/${state.placeId}`, {
 		method: "GET",
 		dataType: "json",
@@ -120,7 +119,6 @@ function appendImgs(a_img, cmt, i) {
 }
 
 function images() {
-
 	$.ajax(`../rest/list/images/${state.placeId}`, {
 		method: "GET",
 		dataType: "json",
