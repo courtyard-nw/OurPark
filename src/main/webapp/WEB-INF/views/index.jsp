@@ -51,7 +51,7 @@
 						<div>풍경을 발견하고 나눠봐요!</div>
 					</h3>
 					<div id="header_input">
-						<form action="map/map" method="get">
+						<form action="jsp/map/" method="get">
 							<div id="search-box" class="hvr-glow"></div>
 							<input type="text" placeholder="동네 이름, 궁금한 장소를 입력하세요" name="keyword">
 							<button id="searchBtn" type="submit">
@@ -83,14 +83,14 @@
 					<h2>우리 동네의 공적 공간</h2>
 					<!-- <a href="#">리스트 더보기</a> -->
 					<div id="container">
-						<a href="map/map?keyword=노은동 어린이공원">
+						<a href="jsp/map?keyword=노은동 어린이공원">
 							<div style="background: url(resources/img/playground.png) no-repeat;">
 								<h3>
 									혼자 있기 좋은<br>
 									<span>놀이터</span>
 								</h3>
 							</div>
-						</a> <a href="map/map?keyword=은구비 공원">
+						</a> <a href="jsp/map?keyword=은구비 공원">
 							<div style="background: url(resources/img/park.png) no-repeat;">
 								<h3>
 									나무가 울창한<br>
@@ -99,7 +99,7 @@
 							</div>
 							<!-- <img src="resources/img/park.JPG">
                     <h3>나무가 울창한<br>공원</h3>  -->
-						</a> <a href="map/map?keyword=대전수목원">
+						</a> <a href="jsp/map?keyword=대전수목원">
 							<div style="background: url(resources/img/expo.png) no-repeat;">
 								<h3>
 									사람들로 활기찬<br>광장
