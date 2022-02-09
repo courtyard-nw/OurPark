@@ -17,8 +17,8 @@ public class JspController {
 	final String review = "review/";
 	final String map = "map/";
 	
-	@RequestMapping("/update")
-	public String update() {
+	@RequestMapping("/list")
+	public String list() {
 		return review + "list";
 	}
 	
