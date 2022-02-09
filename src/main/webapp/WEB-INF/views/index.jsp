@@ -37,7 +37,7 @@
 					</c:if>
 					<a href="." id="logo"><img src="resources/img/logo.png" alt="로고"></a>
 					<c:if test="${sessionScope.member != null}">
-						<a href="review/addAddr" id="review">리뷰 쓰기</a>
+						<a href="jsp/addAddr" id="review">리뷰 쓰기</a>
 					</c:if>
 					<a href="#" id="user">
 						<img src="resources/img/user.png" id="defaultImg" class="t" alt="회원메뉴 버튼">
