@@ -289,7 +289,7 @@ function getListItem(index, places) {
 
     var el = document.createElement('div'),
         itemStr = '<div class="content s-left" style="border-top: 1px solid #DBDBDB;">' +
-            '<a href="../review/review">' +
+            '<a href="./review">' +
             `<img class="c-img img${index}" src="#">` +
             '<div class="txt">' +
             `<p class="name">` + places.place_name + '</p>';
