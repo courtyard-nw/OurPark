@@ -128,22 +128,4 @@ public class ApiController {
 		return "delete";
 	}
 
-//	@RequestMapping("/addAddr")
-//	public String addAddr() {
-//		return path + "addAddr";
-//	}
-//	
-//	@PostMapping("/addInfo")
-//	public String addInfo(Review item, HttpSession session) {
-//
-//		session.setAttribute("placeAddr", item);
-//
-//		return path + "addInfo";
-//	}
-
-//	@RequestMapping("/review")
-//	public String review() {
-//		return path + "review";
-//	}
-
 }
