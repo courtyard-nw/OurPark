@@ -160,7 +160,7 @@ function info(index) {
 function sendPlace() {
     $.ajax({
         type: "POST",
-        url: "sendPlace",
+        url: "./sendPlace",
         contentType: "application/json",
         data: JSON.stringify(item),
         success: function (result) {
