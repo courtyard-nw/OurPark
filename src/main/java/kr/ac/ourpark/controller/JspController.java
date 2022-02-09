@@ -25,7 +25,6 @@ public class JspController {
 	public String update(@PathVariable int code) {
 
 		return review + "update";
-
 	}
 	
 	@RequestMapping("/list")
