@@ -51,7 +51,7 @@
 						<div>풍경을 발견하고 나눠봐요!</div>
 					</h3>
 					<div id="header_input">
-						<form action="jsp/map/" method="get">
+						<form action="jsp/map" method="get">
 							<div id="search-box" class="hvr-glow"></div>
 							<input type="text" placeholder="동네 이름, 궁금한 장소를 입력하세요" name="keyword">
 							<button id="searchBtn" type="submit">
