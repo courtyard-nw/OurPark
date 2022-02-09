@@ -3,6 +3,9 @@ package kr.ac.ourpark.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +17,16 @@ import kr.ac.ourpark.model.Review;
 @RequestMapping("/jsp")
 @Controller
 public class JspController {
+	
 	final String review = "review/";
 	final String map = "map/";
+	
+	@GetMapping("/update/{code}")
+	public String update(@PathVariable int code) {
+
+		return review + "update";
+
+	}
 	
 	@RequestMapping("/list")
 	public String list() {
