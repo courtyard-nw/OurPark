@@ -4,7 +4,24 @@ $(function() {
 		history.back();
 	});
 	
+	item();
+
 })
+
+function item() {
+	const code = getCode();
+
+	$.ajax(`../../rest/list/${code}`, {
+		method: "GET",
+		dataType: "JSON",
+		success: result => {
+			console.log(result);
+		},
+		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
+	});
+
+}
+
 
 function getCode() {
 	const url = location.href;
