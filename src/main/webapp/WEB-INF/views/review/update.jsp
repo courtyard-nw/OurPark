@@ -21,21 +21,7 @@
 
 <link rel="stylesheet" href="../../resources/css/star.css">
 
-<script>
-	$(function() {
-		
-		$(".cancel").click(() => {
-			history.back();
-		});
-		
-		rate();
-		
-	})
-	
-	function rate() {
-		$(`#rating3-${item.rating}`).prop("checked", true);
-	}
-</script>
+<script src="../../resources/js/update.js"></script>
 
 <title>동네산책</title>
 </head>
