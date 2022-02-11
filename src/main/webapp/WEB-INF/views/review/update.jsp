@@ -39,17 +39,17 @@
             </div>
         </header>
         <section>
-            <form action="../update/${item.code}" method="post" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
             
                 <div class="inp">
                     <label>위치</label>
-                    <input type="text" class="form-control mt-2" id="placeAddr" name="placeAddr" value="${item.placeAddr}" readonly>
+                    <input type="text" class="form-control mt-2" id="placeAddr" name="placeAddr" readonly>
                 </div>
                 
                 <div class="inp mt-5">
                     <label>이름</label>
-                    <input type="text" class="form-control mt-2" id="placeName" name="placeName" value="${item.placeName}" readonly>
-                    <input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" value="${item.placeId}" readonly>
+                    <input type="text" class="form-control mt-2" id="placeName" name="placeName" readonly>
+                    <input type="text" id="placeId" class="form-control mt-2" name="placeId" style="display: none;" readonly>
                 </div>
                       
                 <div class="inp mt-5">
@@ -73,7 +73,7 @@
                 
                 <div class="inp mt-5">
                     <label id="descript">설명</label>
-                    <textarea cols="30" rows="10" class="info form-control" name="info">${item.info}</textarea>
+                    <textarea cols="30" rows="10" class="info form-control" name="info"></textarea>
                 </div>
                 
                 <div class="inp mt-5 img_uploader_container">
@@ -83,7 +83,7 @@
                 
                 <div class="btn-group mx-0 mt-5">
                     <div class="btn btn-outline-secondary btn-lg cancel">이전</div>
-                    <button class="btn btn-success btn-lg rounded-5 ">변경</button>
+                    <button class="btn btn-success btn-lg rounded-5" type="button">변경</button>
                 </div>
                 
             </form>
