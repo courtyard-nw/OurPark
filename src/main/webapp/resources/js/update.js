@@ -15,22 +15,18 @@ function item() {
 		method: "GET",
 		dataType: "JSON",
 		success: result => {
-			console.log(result);
+			$("#placeAddr").val(result.placeAddr);
+			$("#placeName").val(result.placeName);
+			$(`#rating3-${result.rating}`).prop("checked", true);
+			$("textarea").text(result.info);
 		},
 		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
 	});
 
 }
 
-
 function getCode() {
 	const url = (location.href).split("/");
 
 	return url[6];
 }
-
-function rate() {
-	$(`#rating3-${item.rating}`).prop("checked", true);
-}
-
-//리뷰 코드 받기 -> item() -> dom 생성
