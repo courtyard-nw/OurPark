@@ -24,10 +24,9 @@ function item() {
 
 
 function getCode() {
-	const url = location.href;
-	const code = url.split("/");
+	const url = (location.href).split("/");
 
-	return code[6];
+	return url[6];
 }
 
 function rate() {
