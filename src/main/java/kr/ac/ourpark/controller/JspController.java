@@ -22,7 +22,9 @@ public class JspController {
 	final String map = "map/";
 	
 	@GetMapping("/update/{code}")
-	public String update(@PathVariable int code) {
+	public String update(@PathVariable int code, HttpSession session) {
+		
+		session.setAttribute("code", code);
 
 		return review + "update";
 	}
