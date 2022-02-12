@@ -21,7 +21,7 @@
     <div class="wrapper">
         <header>
             <div class="header">
-                <a href="#" id="logo"><img src="../resources/img/logo_green.png" alt="로고"></a>
+                <img src="../resources/img/logo_green.png" alt="로고" id="logo">
                 <a href="#" id="user">
                     <div style="background: url(../resources/img/user.png) no-repeat" class="user hvr-glow"></div>
                 </a>
