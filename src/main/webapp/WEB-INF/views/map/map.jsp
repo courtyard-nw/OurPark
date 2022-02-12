@@ -19,7 +19,7 @@
         <div class="header">
             <a href="../" id="logo"><img src="../resources/img/logo_green.png" alt="로고"></a>
             <c:if test="${sessionScope.member != null}">
-               	<a href="../review/addAddr" id="review">리뷰 쓰기</a>
+               	<a href="../jsp/addAddr" id="review">리뷰 쓰기</a>
 			</c:if>
             <a href="#" id="user">
             	<div style="background: url(../resources/img/user.png) no-repeat" class="user hvr-glow"></div>
