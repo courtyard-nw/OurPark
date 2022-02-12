@@ -5,7 +5,6 @@ $(function() {
 	});
 	
 	item();
-
 })
 
 function item() {
@@ -17,6 +16,7 @@ function item() {
 		success: result => {
 			$("#placeAddr").val(result.placeAddr);
 			$("#placeName").val(result.placeName);
+			$("#placeId").val(result.placeId);
 			$(`#rating3-${result.rating}`).prop("checked", true);
 			$("textarea").text(result.info);
 		},
