@@ -14,22 +14,22 @@ import kr.ac.ourpark.model.ReviewImage;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
-		
+
 	@Autowired
 	ReviewDao reviewDao;
-	
+
 	@Autowired
 	ReviewImageDao reviewImageDao;
-	
+
 	@Override
 	@Transactional
 	public void add(Review item) {
 		reviewDao.add(item);
-		
-		for(ReviewImage image : item.getImages()) {
+
+		for (ReviewImage image : item.getImages()) {
 			image.setPlaceId(item.getplaceId());
 			image.setReview(item.getCode());
-			
+
 			reviewImageDao.add(image);
 		}
 	}
@@ -68,13 +68,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Transactional
 	public void delete(int code) {
 		Review item = reviewDao.item(code);
-		
-		for(ReviewImage image : item.getImages()) {
+
+		for (ReviewImage image : item.getImages()) {
 			reviewImageDao.delete(image.getReview());
 		}
-		
+
 		reviewDao.delete(code);
-		
+
 	}
 
 	@Override
@@ -84,18 +84,17 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void update(Review item) {
-		reviewImageDao.delete(item.getCode()); 
-		
+		reviewImageDao.delete(item.getCode());
+
 		reviewDao.update(item);
-		
-		if(item.getImages() != null)
-			for(ReviewImage image : item.getImages()) {
-				image.setPlaceId(item.getplaceId());
-				image.setReview(item.getCode());
-				
-				reviewImageDao.add(image);
-			}
+
+		for (ReviewImage image : item.getImages()) {
+			image.setPlaceId(item.getplaceId());
+			image.setReview(item.getCode());
+
+			reviewImageDao.add(image);
+
+		}
 	}
-	
 
 }
