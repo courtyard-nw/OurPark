@@ -56,7 +56,7 @@
                     <h3 class="rate" id="average">${average}</h3>
                     <div class="write">
                     <c:if test="${sessionScope.member != null}">
-	                    <a href="../review/addAddr">
+	                    <a href="../jsp/addAddr">
 	                        <img src="../resources/img/Icon open-pencil2.png">
 	                        <div>리뷰 쓰기</div>
 	                    </a>
