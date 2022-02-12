@@ -29,6 +29,7 @@ function list() {
 			const tbody = $("tbody");
 			
 			if (list.length < 1) {
+				let tr = $("<tr>");
 				const msg = $("<td>").attr("colspan", "4").addClass("text-center").text("작성한 리뷰가 없습니다");
 				tr.append(msg);
 				tbody.append(tr);
@@ -37,7 +38,6 @@ function list() {
 			} else {
 				for (let i = 0; i <= list.length - 1; i++) {
 					let tr = $("<tr>");
-
 					let code = $("<td>").text(list[i].code);
 					let name = $("<td>").append($("<a>").attr("href", "#").text(list[i].placeName));
 
