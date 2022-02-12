@@ -2,7 +2,22 @@ $(function () {
 	$(".cancel").click(() => history.back());
 
 	list();
+
 })
+
+function del(event) {
+	let c = event.target.id;
+	console.log(c);
+	$.ajax(`../rest/${c}`, {
+		method: "DELETE",
+		success: result => {
+			alert("해당 리뷰가 삭제되었습니다");
+			location.reload();
+			return;
+		},
+		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
+	});
+}
 
 function list() {
 	$.ajax("../rest/list", {
@@ -38,7 +53,7 @@ function list() {
 
 					let btn = $("<td>");
 					let upd = $("<a>").attr("href", `update/${list[i].code}`).addClass("btn btn-secondary btn-sm").text("수정");
-					let del = $("<button>").attr("id", list[i].code).addClass("btn btn-secondary btn-sm delBtn").text("삭제");
+					let del = $("<button>").attr("id", list[i].code).addClass("btn btn-secondary btn-sm delBtn").text("삭제").attr("onclick", "del(event)");
 					btn.append(upd).append(del);
 					tr.append(code).append(name).append(date).append(btn);
 					tbody.append(tr);
