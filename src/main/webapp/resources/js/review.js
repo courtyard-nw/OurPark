@@ -24,11 +24,6 @@ $(function () {
 		sendToMap();
 	})
 
-	//스와이퍼에서 x를 클릭하면 뒤로가기 실행
-	$(".cancel").click(() => {
-		history.back();
-	});
-
 	//사용자 메뉴 클릭 시 드롭다운 메뉴 표시
 	$("#user").click(function () {
 		$(".map_user_menu").removeClass("hidden");
