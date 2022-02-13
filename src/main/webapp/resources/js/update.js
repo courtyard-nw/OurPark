@@ -10,7 +10,7 @@ $(function() {
 
 })
 
-//서버에서는 formData의 값이 null임 -> 콘솔 쿼리문의 파라미터 참고
+//서버에서는 formData의 값이 null, reviewImageDao.add(image) 실행 안됨
 function update() {
 	const formData = new FormData($("form")[0]);
 	const code = getCode();
