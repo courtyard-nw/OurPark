@@ -34,7 +34,17 @@ $(function () {
 		$(".map_user_menu").addClass("hidden");
 	})
 
+	closeSwiper();
+
 })
+
+function closeSwiper() {
+	$(document).keydown(event => {
+		if(event.keyCode == '40')
+			location.href = "./review";
+	});
+}
+
 
 function cmts() {
 	$.ajax(`../rest/list/cmts/${state.placeId}`, {
