@@ -3,7 +3,7 @@
 
 <!-- Swiper -->
     <div class="swiper mySwiper" style="display: none;">
-        <div class="close"><a href="review">X 닫기</a></div>
+        <div class="close"><a href="review" id="close">X 닫기</a></div>
         <div class="swiper-wrapper">
         </div>
         <div class="swiper-button-next"></div>
