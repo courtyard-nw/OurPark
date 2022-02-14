@@ -22,10 +22,6 @@ $(function () {
         $(".map_user_menu > a:nth-child(2)").attr("href", "../jsp/list")
     );
 
-    $(".cancel").click(() => {
-        history.back();
-    });
-
     $("img[draggable='false']").click(() => {
         $("#overlay").css("display", "block");
     });
