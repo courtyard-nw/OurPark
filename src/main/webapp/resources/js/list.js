@@ -1,8 +1,7 @@
 $(function () {
-	$(".cancel").click(() => history.back());
 
 	list();
-
+	
 })
 
 function del(event) {
