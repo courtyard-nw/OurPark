@@ -83,7 +83,7 @@
                 
                 <div class="btn-group mx-0 mt-5">
                     <div class="btn btn-outline-secondary btn-lg cancel">이전</div>
-                    <button class="btn btn-success btn-lg rounded-5" type="button">변경</button>
+                    <button class="btn btn-success btn-lg rounded-5">변경</button>
                 </div>
                 
             </form>
