@@ -6,12 +6,14 @@ $(function() {
 	
 	item();
 
-	$("form button").click(() => update());
+	$("form button").click((e) => update(e));
 
 })
 
 //서버에서는 formData의 값이 null, reviewImageDao.add(image) 실행 안됨
-function update() {
+//connection error는 백신 프로그램 재시동으로 해결
+function update(e) {
+	e.preventDefault();
 	const formData = new FormData($("form")[0]);
 	const code = getCode();
 
