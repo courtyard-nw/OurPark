@@ -72,7 +72,7 @@
 	
 	<update id="update">
 		UPDATE review
-		SET rating=#{rating}, info=#{info}
+		SET rating=#{rating}, info=#{info}, reg_date=NOW()
 		WHERE code=#{code}
 	</update>
 	
