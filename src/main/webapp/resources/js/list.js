@@ -43,11 +43,16 @@ function list() {
 					let timestamp = new Date(list[i].regDate);
 
 					let fmtDate = timestamp.getDate();
+					let fmtSeconds = timestamp.getSeconds();
+
+					//날짜에 0추가 기능 별도 함수로 추출해야함
 					if(fmtDate < 10) {
 						fmtDate = `0${timestamp.getDate()}`;
+					} else if(fmtSeconds < 10) {
+						fmtSeconds = `0${timestamp.getSeconds()}`;
 					}
 
-					let regDate = `${timestamp.getFullYear()}-0${(timestamp.getMonth() + 1)}-${fmtDate} ${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+					let regDate = `${timestamp.getFullYear()}-0${(timestamp.getMonth() + 1)}-${fmtDate} ${timestamp.getHours()}:${timestamp.getMinutes()}:${fmtSeconds}`;
 					let date = $("<td>").text(regDate);
 
 					let btn = $("<td>");
