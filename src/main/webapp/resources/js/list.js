@@ -41,18 +41,9 @@ function list() {
 					let name = $("<td>").append($("<a>").attr("href", "#").text(list[i].placeName));
 
 					let timestamp = new Date(list[i].regDate);
+					let time = fmtTimestamp(timestamp);
 
-					let fmtDate = timestamp.getDate();
-					let fmtSeconds = timestamp.getSeconds();
-
-					//날짜에 0추가 기능 별도 함수로 추출해야함
-					if(fmtDate < 10) {
-						fmtDate = `0${timestamp.getDate()}`;
-					} else if(fmtSeconds < 10) {
-						fmtSeconds = `0${timestamp.getSeconds()}`;
-					}
-
-					let regDate = `${timestamp.getFullYear()}-0${(timestamp.getMonth() + 1)}-${fmtDate} ${timestamp.getHours()}:${timestamp.getMinutes()}:${fmtSeconds}`;
+					let regDate = `${time.year}-${time.month}-${time.date} ${time.hours}:${time.minutes}:${time.seconds}`;
 					let date = $("<td>").text(regDate);
 
 					let btn = $("<td>");
@@ -69,4 +60,33 @@ function list() {
 		error: xhr => { alert(`오류 발생: ${xhr.statusText}`) }
 	});
 
+}
+
+function fmtTimestamp(timestamp) {
+	let time = {
+		year: timestamp.getFullYear(),
+		month : timestamp.getMonth(),
+		date : timestamp.getDate(),
+		hours : timestamp.getHours(),
+		minutes : timestamp.getMinutes(),
+		seconds : timestamp.getSeconds()
+	}
+
+	if(time.month < 10) {
+		time.month = `0${time.month + 1}`;
+	}
+	if(time.date < 10) {
+		time.date = `0${time.date}`;
+	}
+	if(time.hours < 10) {
+		time.hours = `0${time.hours}`;
+	}
+	if(time.minutes < 10) {
+		time.minutes = `0${time.minutes}`;
+	}
+	if(time.seconds < 10) {
+		time.seconds = `0${time.seconds}`;
+	}
+
+	return time
 }
