@@ -14,7 +14,7 @@ $(function() {
 //connection error는 백신 프로그램 재시동으로 해결
 function update(e) {
 	e.preventDefault();
-	const formData = new FormData($("form")[0]);
+	let formData = new FormData($("form")[0]);
 	const code = getCode();
 
     $.ajax(`../../rest/${code}`, {
