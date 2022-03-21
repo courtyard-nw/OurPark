@@ -43,7 +43,7 @@
 	            <div class="warn_msg hidden" id="id_msg">*아이디를 입력해주세요</div>
 	            <div class="inp mt-3">
 	                <label>비밀번호</label>
-	                <input type="password" class="form-control passwd" name="passwd" placeholder="8~16자리, 문자, 숫자, 특수기호 포함">
+	                <input type="password" class="form-control passwd" name="passwd" placeholder="8~15자리, 문자, 숫자, 특수기호 포함">
 	            </div>
 	            <div class="warn_msg hidden" id="passwd_msg">*비밀번호를 입력해주세요</div>
 	            <div class="inp mt-3">
